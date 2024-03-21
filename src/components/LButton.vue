@@ -1,8 +1,16 @@
 <template>
+    <component 
+    :is="tag" 
+    :href="props.href ?? null"
+    class="l-button px-3 py-2"
+    >
+        <slot></slot>
+    </component>
 
 </template>
 
 <script setup>
+import { computed } from 'vue'
 
 const props = defineProps({
     color: {
@@ -33,5 +41,10 @@ const props = defineProps({
         default: true,
     },
     focus: String,
+    href: String
+})
+
+const tag = computed(() => {
+    return props.href ? 'a' : 'button'
 })
 </script>
