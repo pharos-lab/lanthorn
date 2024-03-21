@@ -1,13 +1,10 @@
-<script setup>
-</script>
-
 <template>
-  <div class="p-4">
+  <div class="p-4 bg-red-100">
 
 
   </div>
 </template>
 
-<cript setup>
 
-</cript>
+<script setup>
+</script>
