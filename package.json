@@ -1,15 +1,22 @@
 {
-  "name": "vite-vue-starter",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@pharos-lab/lanthorn",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/lanthorn.umd.cjs",
+  "module": "./dist/lanthorn.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lanthorn.js",
+      "require": "./dist/lanthorn.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:style",
+    "build:style": "npx tailwindcss -i  ./src/tailwind.css -o ./dist/styles.css",
     "preview": "vite preview"
-  },
-  "dependencies": {
-    "vue": "^3.4.30"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
