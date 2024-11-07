@@ -16,13 +16,16 @@ const props = defineProps({
     },
     variant: {
         type: String,
-        default: 'base'
+        default: 'base',
+        validator(value) {
+            return ['light', 'dark', 'base', 'outline', 'text'].includes(value)
+        }
     }
 })
 
 const backgroundClass = computed(() => {
-    if (props.variant == 'outline') {
-        return theme.colors.text[props.color]
+    if (props.variant == 'outline' || props.variant == 'text') {
+        return theme.colors.text[props.color] + ' border border-2 ' + theme.colors.border[props.color]
     }
     return theme.colors.background[props.color][props.variant] || ''
 })

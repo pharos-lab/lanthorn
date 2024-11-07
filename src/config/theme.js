@@ -34,7 +34,12 @@ export const theme = {
         },
         text: {
             primary: 'text-sky-500',
-            secondary: 'text-slate-600'
+            secondary: 'text-slate-600',
+            danger: 'text-red-500'
+        },
+        border: {
+            primary: 'border-sky-500'
         }
     },
+    
 }
