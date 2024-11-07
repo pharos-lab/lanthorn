@@ -1,5 +1,7 @@
 <template>
-    <Button>ok</Button>
+    <div class="p-4">
+        <Button variant="outline">ok</Button>
+    </div>
 </template>
 
 <script setup>

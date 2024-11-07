@@ -1,5 +1,5 @@
 <template>
-<button class="" :class="backgroundClass">
+<button class="py-2 px-3 font-semibold" :class="backgroundClass" >
     <slot></slot>
 </button>
 </template>
@@ -11,13 +11,20 @@ import { useTheme } from '@/composables/useTheme.js'
 const { theme } = useTheme()
 
 const props = defineProps({
+    color: {
+        type: String,
+        default: 'secondary'
+    },
     variant: {
         type: String,
-        default: 'primary'
+        default: 'base'
     }
 })
 
 const backgroundClass = computed(() => {
-    return theme.colors.background[props.variant]
+    if (props.variant == 'outline') {
+        return theme.colors.text[props.color]
+    }
+    return theme.colors.background[props.color][props.variant] || ''
 })
 </script>
