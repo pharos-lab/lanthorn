@@ -5,10 +5,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useTheme } from '@/composables/useTheme.js'
+import { computed, inject } from 'vue'
 
-const { theme } = useTheme()
+const theme = inject('theme')
 
 const props = defineProps({
     color: {

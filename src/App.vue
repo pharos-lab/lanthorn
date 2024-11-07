@@ -1,6 +1,6 @@
 <template>
     <div class="p-4">
-        <Button variant="outline">ok</Button>
+        <Button variant="base" color="danger">ok</Button>
     </div>
 </template>
 
