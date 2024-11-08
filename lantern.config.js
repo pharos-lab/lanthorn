@@ -22,10 +22,6 @@ export const theme = {
                 base:'bg-emerald-500 text-white',
             },
         },
-        text: {
-            primary: 'text-sky-500',
-            secondary: 'text-slate-600'
-        }
     },
     
 }

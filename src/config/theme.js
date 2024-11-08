@@ -72,8 +72,10 @@ export const theme = {
         },
         text: {
             primary: 'text-sky-500',
-            secondary: 'text-slate-600',
-            danger: 'text-red-500'
+            secondary: 'text-slate-500',
+            danger: 'text-red-500',
+            warning: 'text-yellow-500',
+            success: 'text-emerald-500'
         },
         
     },

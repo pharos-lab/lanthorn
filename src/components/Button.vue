@@ -1,5 +1,5 @@
 <template>
-<button class="py-2 px-3 font-semibold" :class="[backgroundClass, borderRadiusClass, hoverClass, shadowClass]" >
+<button class="py-2 px-3 font-semibold transition-all duration-200 ease-in-out" :class="[backgroundClass, borderRadiusClass, hoverClass, shadowClass]" >
     <slot></slot>
 </button>
 </template>
