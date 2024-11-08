@@ -1,5 +1,5 @@
 <template>
-<button class="py-2 px-3 font-semibold" :class="backgroundClass" >
+<button class="py-2 px-3 font-semibold" :class="[backgroundClass, borderRadiusClass]" >
     <slot></slot>
 </button>
 </template>
@@ -20,13 +20,21 @@ const props = defineProps({
         validator(value) {
             return ['light', 'dark', 'base', 'outline', 'text'].includes(value)
         }
+    },
+    rounded: {
+        type: String,
+        default: 'base'
     }
 })
 
 const backgroundClass = computed(() => {
     if (props.variant == 'outline' || props.variant == 'text') {
-        return theme.colors.text[props.color] + ' border border-2 ' + theme.colors.border[props.color]
+        return theme.colors.text[props.color] + ' border border-2 border-current'
     }
-    return theme.colors.background[props.color][props.variant] || ''
+    return theme.colors.background[props.color][props.variant]
+})
+
+const borderRadiusClass = computed(() => {
+    return theme.borderRadius[props.rounded]
 })
 </script>

@@ -37,9 +37,13 @@ export const theme = {
             secondary: 'text-slate-600',
             danger: 'text-red-500'
         },
-        border: {
-            primary: 'border-sky-500'
-        }
     },
+    borderRadius: {
+        none: 'rounded-none',
+        sm: 'rounded-sm',
+        base: 'rounded',
+        md: 'rounded-md',
+        pill: 'rounded-full'
+    }
     
 }
