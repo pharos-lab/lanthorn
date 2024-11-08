@@ -4,11 +4,12 @@
         <div class="l-alert-content flex gap-4">
             <component :is="Heroicons[props.icon]" class="size-8"></component>
             <div class="l-alert-text">    
-                <h4 class="font-semibold text-lg mb-4">
+                <h4 class="font-semibold text-lg mb-4" v-if="props.title">
                     {{ props.title }}
                 </h4>
                 
-                <p class="">{{  props.description }}</p>
+                <p class="leading-snug" v-if="props.description">{{  props.description }}</p>
+                <slot></slot>
             </div>
         </div>
     </div>
