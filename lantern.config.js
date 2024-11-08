@@ -2,9 +2,9 @@ export const theme = {
     colors: {
         background: {
             primary: {
-                light:'bg-sky-100 text-sky-700',
+                light:'bg-[#bada55]',
                 dark:'bg-sky-800 text-white',
-                base:'bg-sky-500 text-white',
+                base:'bg-[#bada55]',
             },
             secondary: {
                 light:'bg-slate-100 text-slate-700',
