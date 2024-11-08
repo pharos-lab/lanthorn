@@ -1,5 +1,5 @@
 <template>
-<button class="py-2 px-3 font-semibold" :class="[backgroundClass, borderRadiusClass, hoverClass]" >
+<button class="py-2 px-3 font-semibold" :class="[backgroundClass, borderRadiusClass, hoverClass, shadowClass]" >
     <slot></slot>
 </button>
 </template>
@@ -28,6 +28,10 @@ const props = defineProps({
     hover: {
         type: Boolean,
         default: true
+    },
+    shadow: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -44,5 +48,9 @@ const borderRadiusClass = computed(() => {
 
 const hoverClass = computed(() => {
     return props.hover ? theme.colors.background.hover[props.color][props.variant] : null
+})
+
+const shadowClass = computed(() => {
+    return props.shadow ? 'shadow' : null
 })
 </script>
