@@ -1,5 +1,6 @@
 <template>
-<button class="l-button py-2 px-3 font-semibold transition-all duration-200 ease-in-out" :class="[backgroundClass, borderRadiusClass, hoverClass, shadowClass]" >
+<button class="l-button font-semibold transition-all duration-200 ease-in-out" 
+    :class="[backgroundClass, borderRadiusClass, hoverClass, shadowClass, paddingClass]" >
     <slot></slot>
 </button>
 </template>
@@ -51,6 +52,10 @@ const hoverClass = computed(() => {
 })
 
 const shadowClass = computed(() => {
-    return props.shadow ? 'shadow' : null
+    return theme.shadow.button
+})
+
+const paddingClass = computed(() => {
+    return theme.padding.button
 })
 </script>

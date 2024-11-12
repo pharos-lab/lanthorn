@@ -88,11 +88,18 @@ export const theme = {
     },
     shadow: {
         base: 'shadow',
-        alert: 'shadow-lg'
+        alert: 'shadow-lg',
+        button: 'shadow-xl'
     },
     borders: {
         base: 'border-2',
         alert: 'border-8'
+    },
+    padding: {
+        base: 'p-4',
+        alert: 'p-5',
+        button: 'py-2 px-3'
+
     }
     
 }

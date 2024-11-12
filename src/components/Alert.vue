@@ -1,6 +1,6 @@
 <template>
     <Transition name="fade">
-        <div class="l-alert relative p-5 shadow" :class="[backgroundClass, shadowClass]" v-show="isOpen">
+        <div class="l-alert relative shadow" :class="[backgroundClass, shadowClass, paddingClass]" v-show="isOpen">
             <component :is="Heroicons['XCircleIcon']" 
             class="size-6 float-right cursor-pointer" 
             v-if="props.dismissable"
@@ -64,7 +64,11 @@ const backgroundClass = computed(() => {
 })
 
 const shadowClass = computed(() => {
-    return theme.shadow.alert || theme.shadow.base
+    return theme.shadow.alert
+})
+
+const paddingClass = computed(() => {
+    return theme.padding.button
 })
 </script>
 
