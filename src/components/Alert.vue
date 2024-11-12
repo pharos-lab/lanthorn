@@ -1,23 +1,25 @@
 <template>
-    <div class="l-alert relative p-5 shadow" :class="[backgroundClass, shadowClass]" v-show="isOpen">
-        <component :is="Heroicons['XCircleIcon']" 
+    <Transition name="fade">
+        <div class="l-alert relative p-5 shadow" :class="[backgroundClass, shadowClass]" v-show="isOpen">
+            <component :is="Heroicons['XCircleIcon']" 
             class="size-6 float-right cursor-pointer" 
             v-if="props.dismissable"
             @click="isOpen = false"
             ></component>
-
-        <div class="l-alert-content flex gap-4">
-            <component :is="Heroicons[props.icon]" class="size-8"></component>
-            <div class="l-alert-text">    
-                <h4 class="font-semibold text-lg mb-4" v-if="props.title">
-                    {{ props.title }}
-                </h4>
-                
-                <p class="leading-snug" v-if="props.description">{{  props.description }}</p>
-                <slot></slot>
+            
+            <div class="l-alert-content flex gap-4">
+                <component :is="Heroicons[props.icon]" class="size-8"></component>
+                <div class="l-alert-text">    
+                    <h4 class="font-semibold text-lg mb-4" v-if="props.title">
+                        {{ props.title }}
+                    </h4>
+                    
+                    <p class="leading-snug" v-if="props.description">{{  props.description }}</p>
+                    <slot></slot>
+                </div>
             </div>
         </div>
-    </div>
+    </Transition>
 </template>
 
 
@@ -39,7 +41,7 @@ const props = defineProps({
         type: String,
         default: 'base',
         validator(value) {
-            return ['light', 'dark', 'base', 'outline', 'text'].includes(value)
+            return ['light', 'dark', 'base', 'outline'].includes(value)
         }
     },
     shadow: {
@@ -65,3 +67,12 @@ const shadowClass = computed(() => {
     return props.shadow ? 'shadow' : null
 })
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>
