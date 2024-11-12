@@ -2,13 +2,13 @@
     <Transition name="fade">
         <div class="l-alert relative shadow" :class="classes" v-show="isOpen">
             <component :is="Heroicons['XCircleIcon']" 
-            class="size-6 float-right cursor-pointer" 
+            class="size-6 absolute right-2 top-2 cursor-pointer" 
             v-if="props.dismissable"
             @click="isOpen = false"
             ></component>
             
             <div class="l-alert-content flex gap-4">
-                <component :is="Heroicons[props.icon]" class="size-8"></component>
+                <component :is="Heroicons[props.icon]" class="size-8 shrink-0"></component>
                 <div class="l-alert-text">    
                     <h4 class="font-semibold text-lg mb-4" v-if="props.title">
                         {{ props.title }}
@@ -25,7 +25,7 @@
 
 <script setup>
 import * as Heroicons  from '@heroicons/vue/24/outline'
-import { inject, ref } from 'vue'
+import { inject, ref, computed } from 'vue'
 
 const props = defineProps({
     title: String,
@@ -53,9 +53,9 @@ const props = defineProps({
 })
 const getClasses = inject('getClasses')
 
-const classes = getClasses(props, 'alert')
-
-console.log(classes)
+const classes = computed(() => {
+    return getClasses(props, 'alert')
+})
 
 const isOpen = ref(true)
 

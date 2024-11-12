@@ -38,5 +38,7 @@ const props = defineProps({
 
 const getClasses = inject('getClasses')
 
-const classes = getClasses(props, 'button')
+const classes = computed(() => {
+    return getClasses(props, 'button')
+})
 </script>
