@@ -85,6 +85,14 @@ export const theme = {
         base: 'rounded',
         md: 'rounded-md',
         pill: 'rounded-full'
+    },
+    shadow: {
+        base: 'shadow',
+        alert: 'shadow-lg'
+    },
+    borders: {
+        base: 'border-2',
+        alert: 'border-8'
     }
     
 }

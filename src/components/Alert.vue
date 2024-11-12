@@ -58,13 +58,13 @@ const isOpen = ref(true)
 
 const backgroundClass = computed(() => {
     if (props.variant == 'outline' || props.variant == 'text') {
-        return theme.colors.text[props.color] + ' border border-2 border-current'
+        return theme.colors.text[props.color] + ' border border-current ' + (theme.borders.alert ||theme.borders.base)
     }
     return theme.colors.background[props.color][props.variant]
 })
 
 const shadowClass = computed(() => {
-    return props.shadow ? 'shadow' : null
+    return theme.shadow.alert || theme.shadow.base
 })
 </script>
 
