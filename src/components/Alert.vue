@@ -1,6 +1,11 @@
 <template>
-    <div class="l-alert relative p-5 shadow" :class="[backgroundClass, shadowClass]">
-        <component :is="Heroicons['XCircleIcon']" class="size-6 float-right"></component>
+    <div class="l-alert relative p-5 shadow" :class="[backgroundClass, shadowClass]" v-show="isOpen">
+        <component :is="Heroicons['XCircleIcon']" 
+            class="size-6 float-right cursor-pointer" 
+            v-if="props.dismissable"
+            @click="isOpen = false"
+            ></component>
+
         <div class="l-alert-content flex gap-4">
             <component :is="Heroicons[props.icon]" class="size-8"></component>
             <div class="l-alert-text">    
@@ -18,7 +23,7 @@
 
 <script setup>
 import * as Heroicons  from '@heroicons/vue/24/outline'
-import { inject, computed } from 'vue'
+import { inject, computed, ref } from 'vue'
 
 const theme = inject('theme')
 
@@ -40,8 +45,14 @@ const props = defineProps({
     shadow: {
         type: Boolean,
         default: true
+    },
+    dismissable: {
+        type: Boolean,
+        default: true
     }
 })
+
+const isOpen = ref(true)
 
 const backgroundClass = computed(() => {
     if (props.variant == 'outline' || props.variant == 'text') {
