@@ -1,6 +1,6 @@
 <template>
 <button class="l-button font-semibold transition-all duration-200 ease-in-out" 
-    :class="[backgroundClass, borderRadiusClass, hoverClass, shadowClass, paddingClass]" >
+    :class="classes" >
     <slot></slot>
 </button>
 </template>
@@ -8,7 +8,7 @@
 <script setup>
 import { computed, inject } from 'vue'
 
-const theme = inject('theme')
+
 
 const props = defineProps({
     color: {
@@ -36,26 +36,7 @@ const props = defineProps({
     }
 })
 
-const backgroundClass = computed(() => {
-    if (props.variant == 'outline' || props.variant == 'text') {
-        return theme.colors.text[props.color] + ' border border-2 border-current'
-    }
-    return theme.colors.background[props.color][props.variant]
-})
+const getClasses = inject('getClasses')
 
-const borderRadiusClass = computed(() => {
-    return theme.borderRadius[props.rounded]
-})
-
-const hoverClass = computed(() => {
-    return props.hover ? theme.colors.background.hover[props.color][props.variant] : null
-})
-
-const shadowClass = computed(() => {
-    return theme.shadow.button
-})
-
-const paddingClass = computed(() => {
-    return theme.padding.button
-})
+const classes = getClasses(props, 'button')
 </script>

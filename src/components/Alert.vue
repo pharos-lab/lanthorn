@@ -1,6 +1,6 @@
 <template>
     <Transition name="fade">
-        <div class="l-alert relative shadow" :class="[backgroundClass, shadowClass, paddingClass]" v-show="isOpen">
+        <div class="l-alert relative shadow" :class="classes" v-show="isOpen">
             <component :is="Heroicons['XCircleIcon']" 
             class="size-6 float-right cursor-pointer" 
             v-if="props.dismissable"
@@ -25,9 +25,7 @@
 
 <script setup>
 import * as Heroicons  from '@heroicons/vue/24/outline'
-import { inject, computed, ref } from 'vue'
-
-const theme = inject('theme')
+import { inject, ref } from 'vue'
 
 const props = defineProps({
     title: String,
@@ -53,23 +51,14 @@ const props = defineProps({
         default: true
     }
 })
+const getClasses = inject('getClasses')
+
+const classes = getClasses(props, 'alert')
+
+console.log(classes)
 
 const isOpen = ref(true)
 
-const backgroundClass = computed(() => {
-    if (props.variant == 'outline' || props.variant == 'text') {
-        return theme.colors.text[props.color] + ' border border-current ' + (theme.borders.alert ||theme.borders.base)
-    }
-    return theme.colors.background[props.color][props.variant]
-})
-
-const shadowClass = computed(() => {
-    return theme.shadow.alert
-})
-
-const paddingClass = computed(() => {
-    return theme.padding.button
-})
 </script>
 
 <style scoped>
