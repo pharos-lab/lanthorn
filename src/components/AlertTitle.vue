@@ -1,5 +1,5 @@
 <template>
-    <div class="l-alert-title">
+    <h3 class="l-alert-title font-semibold text-lg mb-4">
         <slot></slot>
-    </div>
-    </template>
+    </h3>
+</template>

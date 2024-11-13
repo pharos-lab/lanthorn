@@ -52,9 +52,6 @@ const props = defineProps({
     }
 })
 
-const slots = useSlots().default()[2].type.__file
-console.log(slots)
-
 const getClasses = inject('getClasses')
 
 const classes = computed(() => {
