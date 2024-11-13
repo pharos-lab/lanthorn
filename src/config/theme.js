@@ -88,8 +88,8 @@ export const theme = {
     },
     shadow: {
         base: 'shadow',
-        alert: 'shadow-lg',
-        button: 'shadow-xl'
+        alert: 'shadow',
+        button: 'shadow'
     },
     borders: {
         base: 'border-2',

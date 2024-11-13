@@ -4,15 +4,21 @@
         <Alert color="success" variant="outline" icon="InformationCircleIcon" closable="" >
             <AlertTitle>Lorem, ipsum.</AlertTitle>
             <AlertDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit.</AlertDescription>
+            <AlertActions>
+                <AlertAction color="secondary" variant="light">Cancel</AlertAction>
+                <AlertAction color="danger" @click="console.log('ok')">Confirm</AlertAction>
+            </AlertActions>
         </Alert>
     </div>
 </template>
 
 <script setup>
 import Button from '@/components/Button.vue'
-import Alert from './components/Alert.vue';
-import AlertTitle from './components/AlertTitle.vue';
-import AlertDescription from './components/AlertDescription.vue';
+import Alert from '@/components/Alert.vue';
+import AlertTitle from '@/components/AlertTitle.vue';
+import AlertDescription from '@/components/AlertDescription.vue';
+import AlertActions from '@/components/AlertActions.vue';
+import AlertAction from '@/components/AlertAction.vue';
 </script>
 
 

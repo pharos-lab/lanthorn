@@ -9,7 +9,7 @@
             
             <div class="l-alert-content flex gap-4">
                 <component :is="Heroicons[props.icon]" class="size-8 shrink-0"></component>
-                <div class="l-alert-text">    
+                <div class="l-alert-text grow">    
                     <h4 class="font-semibold text-lg mb-4" v-if="props.title">
                         {{ props.title }}
                     </h4>
@@ -25,7 +25,7 @@
 
 <script setup>
 import * as Heroicons  from '@heroicons/vue/24/outline'
-import { inject, ref, computed } from 'vue'
+import { inject, ref, computed, useSlots } from 'vue'
 
 const props = defineProps({
     title: String,
@@ -51,6 +51,10 @@ const props = defineProps({
         default: true
     }
 })
+
+const slots = useSlots().default()[2].type.__file
+console.log(slots)
+
 const getClasses = inject('getClasses')
 
 const classes = computed(() => {
