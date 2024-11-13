@@ -1,14 +1,14 @@
 <template>
 <button class="l-button font-semibold transition-all duration-200 ease-in-out" 
     :class="classes" >
+    <component :is="Heroicons[props.icon]" v-if="props.icon" class="size-6"></component>
     <slot></slot>
 </button>
 </template>
 
 <script setup>
 import { computed, inject } from 'vue'
-
-
+import * as Heroicons from '@heroicons/vue/24/outline'
 
 const props = defineProps({
     color: {
@@ -33,12 +33,39 @@ const props = defineProps({
     shadow: {
         type: Boolean,
         default: false
+    },
+    icon: String,
+    iconPosition: {
+        type: String,
+        validator(value) {
+            return ['top', 'bottom', 'left', 'right'].includes(value)
+        }
     }
 })
 
 const getClasses = inject('getClasses')
 
 const classes = computed(() => {
-    return getClasses(props, 'button')
+    let position
+
+    if (props.icon) {
+        position = "flex items-center gap-2 "
+        switch(props.iconPosition) {
+            case 'right':
+                position += 'flex-row-reverse'
+                break
+            case 'top':
+                position += 'flex-col'
+                break
+            case 'bottom':
+                position += 'flex-col-reverse'
+                break
+        }
+    }
+    return [...getClasses(props, 'button'), position]
+})
+
+const iconPosition = computed(() => {
+
 })
 </script>
