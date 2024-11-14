@@ -31,6 +31,9 @@ export const theme = {
                 dark:'bg-red-700 text-white',
                 base:'bg-red-500 text-white',
             },
+            white: {
+                base:'bg-white text-slate-700',
+            },
             hover: {
                 primary: {
                     light:'hover:bg-sky-200 text-sky-700',
@@ -99,7 +102,6 @@ export const theme = {
         base: 'p-4',
         alert: 'p-5',
         button: 'py-2 px-3'
-
     }
     
 }

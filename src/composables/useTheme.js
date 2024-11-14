@@ -11,9 +11,13 @@ export function useTheme() {
 
 
   const getClasses = (props, component) => {
-    const backgroundClass = (props.variant == 'outline' || props.variant == 'text')
-      ? theme.colors.text[props.color] + ' border border-current ' + (theme.borders[component] ||theme.borders.base)
-      : theme.colors.background[props.color][props.variant]
+    let backgroundClass
+    if (props.variant == 'outline' || props.variant == 'text') {
+      backgroundClass = theme.colors.text[props.color]
+      backgroundClass += props.variant == 'outline' ? ' border border-current ' + (theme.borders[component] ||theme.borders.base) : ''
+    } else {
+      backgroundClass = theme.colors.background[props.color][props.variant]
+    }
   
     const hoverClass = props.hover ? theme.colors.background.hover[props.color][props.variant] : null
 
