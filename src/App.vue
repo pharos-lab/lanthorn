@@ -1,6 +1,6 @@
 <template>
     <div class="p-4 flex flex-col gap-8 items-start">
-        <Button variant="base" color="primary" rounded="base" @click="openModal = true" icon="PencilSquareIcon" iconPosition="bottom">Open Modal</Button>
+        <Button variant="base" color="primary" rounded="base" @click="openModal = true" icon="PencilSquareIcon" iconPosition="bottom" size="large">Open Modal</Button>
 
         <Alert color="success" variant="outline" icon="InformationCircleIcon" closable="" >
             <AlertTitle>Lorem, ipsum.</AlertTitle>
@@ -11,9 +11,9 @@
             </Actions>
         </Alert>
 
-        <Modal teleport="#app" v-if="openModal" @close="openModal = false">
+        <Modal teleport="#app" v-if="openModal" @close="openModal = false" size="extra-large">
             <ModalTitle>Lorem ipsum dolor, sit amet consectetur adipisicing.</ModalTitle>
-            <ModalDescription>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae, doloribus harum tenetur nesciunt aperiam debitis.</ModalDescription>
+            <ModalDescription>Lorem ipsum dolor,.</ModalDescription>
             <Actions>
                 <Button variant="light">Cancel</Button>
                 <Button color="success">Confirm</Button>

@@ -26,8 +26,11 @@ export function useTheme() {
     const shadowClass = theme.shadow[component]
   
     const paddingClass = theme.padding[component]
+
+    const sizeClass = theme.size[component]?.[props.size]
+    //console.table( [backgroundClass, shadowClass, paddingClass, hoverClass, borderRadiusClass, sizeClass])
     
-    return [backgroundClass, shadowClass, paddingClass, hoverClass, borderRadiusClass]
+    return [backgroundClass, shadowClass, paddingClass, hoverClass, borderRadiusClass, sizeClass]
   }
 
 

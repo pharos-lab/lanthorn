@@ -101,7 +101,19 @@ export const theme = {
     padding: {
         base: 'p-4',
         alert: 'p-5',
-        button: 'py-2 px-3'
+    },
+    size: {
+        modal: {
+            small: 'max-w-md',
+            medium: 'max-w-large',
+            large: 'max-w-3xl',
+            'extra-large': 'max-w-6xl'
+        },
+        button: {
+            small: 'px-2 py-1',
+            medium: 'px-3 py-2',
+            large: 'px-4 py-3'
+        }
     }
     
 }

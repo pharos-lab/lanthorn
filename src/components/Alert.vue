@@ -49,7 +49,7 @@ const props = defineProps({
     dismissable: {
         type: Boolean,
         default: true
-    }
+    },
 })
 
 const getClasses = inject('getClasses')

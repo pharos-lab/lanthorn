@@ -40,7 +40,12 @@ const props = defineProps({
         validator(value) {
             return ['top', 'bottom', 'left', 'right'].includes(value)
         }
-    }
+    },
+    size: {
+        type: String,
+        default: 'medium',
+        validator: value => ['small', 'medium', 'large'].includes(value),
+    },    
 })
 
 const getClasses = inject('getClasses')
