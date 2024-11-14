@@ -48,3 +48,30 @@ const closeModal = () => {
 }
 
 </script>
+
+<style scoped>
+.l-modal-overlay {
+  animation: fadeIn 0.4s ease-in-out;
+}
+.l-modal {
+  animation: slideIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+</style>
