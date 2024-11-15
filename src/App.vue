@@ -24,10 +24,10 @@
             ok
         </AspectRatio>
 
-        <Card>
-            <CardHeader></CardHeader>
-            <CardContent></CardContent>
-            <CardFooter></CardFooter>
+        <Card img="./assets/vue.svg">
+            <CardHeader>title</CardHeader>
+            <CardContent>contetn</CardContent>
+            <CardFooter>footer</CardFooter>
         </Card>
     </div>
 </template>
@@ -42,6 +42,7 @@ import Modal from '@/components/Modal.vue'
 import ModalTitle from '@/components/ModalTitle.vue'
 import ModalDescription from '@/components/ModalDescription.vue'
 import AspectRatio from '@/components/AspectRatio.vue'
+import Card from './components/Card.vue';
 
 import { ref } from 'vue'
 

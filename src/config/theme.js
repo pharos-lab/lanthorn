@@ -92,15 +92,17 @@ export const theme = {
     shadow: {
         base: 'shadow',
         alert: 'shadow',
-        button: 'shadow'
+        button: 'shadow',
+        card: 'shadow'
     },
     borders: {
         base: 'border-2',
-        alert: 'border-8'
+        alert: 'border-2'
     },
     padding: {
         base: 'p-4',
         alert: 'p-5',
+        card: 'p-4'
     },
     size: {
         modal: {

@@ -2,7 +2,7 @@
 import { merge } from 'lodash-es';
 import { theme as defaultTheme } from '@/config/theme.js';
 import { theme as userTheme } from '/lantern.config.js'
-import { reactive, computed } from 'vue'
+import { reactive } from 'vue'
 
 
 export function useTheme() {

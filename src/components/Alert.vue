@@ -25,7 +25,7 @@
 
 <script setup>
 import * as Heroicons  from '@heroicons/vue/24/outline'
-import { inject, ref, computed, useSlots } from 'vue'
+import { inject, ref, computed } from 'vue'
 
 const props = defineProps({
     title: String,
