@@ -19,6 +19,16 @@
                 <Button color="success">Confirm</Button>
             </Actions>
         </Modal>
+
+        <AspectRatio ratio="45/9">
+            ok
+        </AspectRatio>
+
+        <Card>
+            <CardHeader></CardHeader>
+            <CardContent></CardContent>
+            <CardFooter></CardFooter>
+        </Card>
     </div>
 </template>
 
@@ -31,6 +41,7 @@ import Actions from '@/components/Actions.vue';
 import Modal from '@/components/Modal.vue'
 import ModalTitle from '@/components/ModalTitle.vue'
 import ModalDescription from '@/components/ModalDescription.vue'
+import AspectRatio from '@/components/AspectRatio.vue'
 
 import { ref } from 'vue'
 
