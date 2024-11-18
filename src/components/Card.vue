@@ -1,7 +1,7 @@
 <template>
-    <div class="l-card" :class="classes">
-        <AspectRatio ratio="16/9" class="-mx-4 mb-4" v-if="props.img">
-            <img :src="props.img" :alt="props.alt" srcset="">
+    <div class="l-card overflow-hidden" :class="classes">
+        <AspectRatio ratio="16/9" v-if="props.img" :class="marginClass" class="relative overflow-auto">
+            <img :src="props.img" :alt="props.alt" class="object-cover" :class="imgDimensionClass">
         </AspectRatio>
    
         <div class="l-card-content">
@@ -39,12 +39,71 @@ const props = defineProps({
         default: true
     },
     img: String,
-    alt: String
+    alt: String,
+    imgPosition: {
+        type: String,
+        default: 'top',
+        validator(value) {
+            return ['top', 'bottom', 'left', 'right'].includes(value)
+        }
+    }
 })
 
 const getClasses = inject('getClasses')
 
 const classes = computed(() => {
+    if(props.img) {
+        let imgPosition = 'flex gap-4 '
+        switch(props.imgPosition) {
+            case 'bottom':
+                imgPosition += 'flex-col-reverse'
+                break
+            case 'top':
+                imgPosition += 'flex-col'
+                break
+            case 'right':
+                imgPosition += 'flex-row-reverse'
+                break
+        }
+        console.log(imgPosition)
+        return [...getClasses(props, 'card'), imgPosition]
+    }
     return getClasses(props, 'card')
+})
+
+const marginClass = computed(() =>{
+    if (props.imgPosition ==  'top') {
+        return '-mx-4 -mt-4' 
+    }
+
+    if (props.imgPosition ==  'bottom') {
+        return '-mx-4 -mb-4' 
+    }
+
+    if (props.imgPosition ==  'left') {
+        return '-my-4 -ml-4' 
+    }
+
+    if (props.imgPosition ==  'right') {
+        return '-my-4 -mr-4' 
+    }
+})
+
+const imgDimensionClass = computed(() =>{
+    if (props.imgPosition ==  'top') {
+        return 'w-full max-h-full' 
+    }
+
+    if (props.imgPosition ==  'bottom') {
+        return 'w-full max-h-full' 
+    }
+
+    if (props.imgPosition ==  'left') {
+        return 'w-full h-full' 
+    }
+
+    if (props.imgPosition ==  'right') {
+        return 'w-full h-full' 
+    }
 })
 </script>
