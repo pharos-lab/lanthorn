@@ -67,10 +67,7 @@ const classes = computed(() => {
                 break
         }
     }
-    return [...getClasses(props, 'button'), position]
-})
-
-const iconPosition = computed(() => {
-
+    console.log(getClasses(props, 'button'))
+    return getClasses(props, 'button', ['']) + ' ' + position
 })
 </script>

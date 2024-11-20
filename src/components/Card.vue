@@ -65,7 +65,6 @@ const classes = computed(() => {
                 imgPosition += 'flex-row-reverse'
                 break
         }
-        console.log(imgPosition)
         return [...getClasses(props, 'card'), imgPosition]
     }
     return getClasses(props, 'card')

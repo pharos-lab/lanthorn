@@ -24,7 +24,7 @@
             ok
         </AspectRatio>
 
-        <Card :img="imgUrl" imgPosition="top">
+        <Card imgPosition="top">
             <CardHeader>title</CardHeader>
             <CardContent>contetn</CardContent>
             <CardFooter>footer</CardFooter>
