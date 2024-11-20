@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 flex flex-col gap-8 items-start">
+    <div class="p-4 ">
         <Button variant="base" color="primary" rounded="base" @click="openModal = true" icon="PencilSquareIcon" iconPosition="bottom" size="large">Open Modal</Button>
 
         <Alert color="success" variant="outline" icon="InformationCircleIcon" closable="" >
@@ -24,11 +24,22 @@
             ok
         </AspectRatio>
 
-        <Card imgPosition="top">
-            <CardHeader>title</CardHeader>
-            <CardContent>contetn</CardContent>
-            <CardFooter>footer</CardFooter>
-        </Card>
+        <div class="flex gap-4">
+
+            <Card imgPosition="left" :img="imgUrl" img-size="w-1/4" class="grow">
+                <CardHeader>title</CardHeader>
+                <CardContent>contetn</CardContent>
+                <CardFooter>footer</CardFooter>
+            </Card>
+
+            <Card imgPosition="right" :img="imgUrl" class="grow">
+                <CardHeader>title</CardHeader>
+                <CardContent>contetn</CardContent>
+                <CardFooter>footer</CardFooter>
+            </Card>
+        </div>
+
+        
     </div>
 </template>
 

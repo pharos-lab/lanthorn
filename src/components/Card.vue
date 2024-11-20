@@ -1,10 +1,10 @@
 <template>
     <div class="l-card overflow-hidden" :class="classes">
-        <AspectRatio ratio="16/9" v-if="props.img" :class="marginClass" class="relative overflow-auto">
-            <img :src="props.img" :alt="props.alt" class="object-cover" :class="imgDimensionClass">
+        <AspectRatio ratio="16/9" v-if="props.img" class="relative overflow-auto shrink-0" :class="imgDimensionClass">
+            <img :src="props.img" :alt="props.alt" class="object-cover w-full max-h-full" >
         </AspectRatio>
    
-        <div class="l-card-content">
+        <div class="l-card-content grow" :class="getClass(props, 'card', 'padding')">
             <slot></slot>
         </div>
     </div>
@@ -46,63 +46,47 @@ const props = defineProps({
         validator(value) {
             return ['top', 'bottom', 'left', 'right'].includes(value)
         }
+    },
+    imgSize: {
+        type: String,
+        default: 'w-1/4',
     }
 })
 
 const getClasses = inject('getClasses')
+const getClass = inject('getClass')
 
 const classes = computed(() => {
     if(props.img) {
-        let imgPosition = 'flex gap-4 '
+        let imgPosition = ' '
         switch(props.imgPosition) {
             case 'bottom':
-                imgPosition += 'flex-col-reverse'
+                imgPosition += 'flex gap-4 flex-col-reverse'
                 break
             case 'top':
-                imgPosition += 'flex-col'
+                imgPosition += 'flex gap-4 flex-col'
                 break
-            case 'right':
-                imgPosition += 'flex-row-reverse'
+            case 'left': 
+                imgPosition += 'flex gap-4 flex-row ' + props.imgSize
                 break
+            case 'right': 
+                imgPosition += 'flex gap-4 flex-row-reverse ' + props.imgSize
+                break
+            
         }
-        return [...getClasses(props, 'card'), imgPosition]
+        return getClasses(props, 'button') + ' ' + imgPosition
     }
-    return getClasses(props, 'card')
-})
-
-const marginClass = computed(() =>{
-    if (props.imgPosition ==  'top') {
-        return '-mx-4 -mt-4' 
-    }
-
-    if (props.imgPosition ==  'bottom') {
-        return '-mx-4 -mb-4' 
-    }
-
-    if (props.imgPosition ==  'left') {
-        return '-my-4 -ml-4' 
-    }
-
-    if (props.imgPosition ==  'right') {
-        return '-my-4 -mr-4' 
-    }
+    return getClasses(props, 'card', {exclude: ['padding'], })
 })
 
 const imgDimensionClass = computed(() =>{
-    if (props.imgPosition ==  'top') {
-        return 'w-full max-h-full' 
-    }
-
-    if (props.imgPosition ==  'bottom') {
-        return 'w-full max-h-full' 
-    }
-
+    
     if (props.imgPosition ==  'left') {
-        return 'w-full h-full' 
+        return props.imgSize
     }
 
     if (props.imgPosition ==  'right') {
-        return 'w-full h-full' 
+        return props.imgSize
     }
 })
 </script>
