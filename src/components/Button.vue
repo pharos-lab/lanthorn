@@ -49,6 +49,8 @@ const props = defineProps({
 })
 
 const getClasses = inject('getClasses')
+const getClass = inject('getClass')
+const getClassesObject = inject('getClassesObject')
 
 const classes = computed(() => {
     let position
@@ -67,6 +69,10 @@ const classes = computed(() => {
                 break
         }
     }
+    console.log(getClasses(props, 'button'))
+    console.log(getClass(props, 'button', 'size'))
+    console.log(getClassesObject(props, 'button'))
+
     return getClasses(props, 'button') + ' ' + position
 })
 </script>
