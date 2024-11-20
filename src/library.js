@@ -1,7 +1,7 @@
 import * as components from './components';
 import { useTheme } from '@/composables/useTheme.js'
 
-const { theme, getClasses, getClassess } = useTheme()
+const { theme, getClasses, getClass, getClassObject } = useTheme()
 
 const lantern = {
   install(Vue, options = {}) {
@@ -13,7 +13,8 @@ const lantern = {
 
     Vue.provide('theme', theme)
     Vue.provide('getClasses', getClasses)
-    Vue.provide('getClassess', getClassess)
+    Vue.provide('getClass', getClass)
+    Vue.provide('getClassObject', getClassObject)
   },
 };
 

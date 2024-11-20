@@ -60,5 +60,92 @@ export function useTheme() {
     return Object.values(classes).filter(Boolean).join(' ');
   };
 
-  return { theme, getClasses }
+  const getClass = (props, component, property) => {
+    let classToReturn = ''
+
+    if (property == 'background') {
+      if (props.variant === 'outline' || props.variant === 'text') {
+        classToReturn = theme.colors.text[props.color];
+        if (props.variant === 'outline') {
+          classToReturn += ' border border-current ' + (theme.borders[component] || theme.borders.base);
+        }
+      } else {
+        classToReturn = theme.colors.background[props.color][props.variant];
+      }
+
+      return classToReturn
+    }
+  
+    if (property == 'hover') {
+      return props.hover ? theme.colors.background.hover[props.color][props.variant] : null;
+    }
+  
+    if (property == 'borderRadius') {
+      return theme.borderRadius[props.rounded];
+    }
+  
+    if (property == 'shadow') {
+      return theme.shadow[component];
+    }
+  
+    if (property == 'padding') {
+      return theme.padding[component];
+    }
+  
+    if (property == 'size') {
+      return theme.size[component]?.[props.size];
+    }
+  }
+
+  const getClassesObject = (props, component, options = {}) => {
+    const {
+      exclude = [], // Specify which class types to exclude
+      debug = false, // Debug mode for logging classes
+    } = options;
+  
+    // Determine which class types to include by default
+    const allClassTypes = ['background', 'hover', 'borderRadius', 'shadow', 'padding', 'size'];
+    const include = allClassTypes.filter(type => !exclude.includes(type));
+  
+    const classes = {};
+  
+    if (include.includes('background')) {
+      if (props.variant === 'outline' || props.variant === 'text') {
+        classes.background = theme.colors.text[props.color];
+        if (props.variant === 'outline') {
+          classes.background += ' border border-current ' + (theme.borders[component] || theme.borders.base);
+        }
+      } else {
+        classes.background = theme.colors.background[props.color][props.variant];
+      }
+    }
+  
+    if (include.includes('hover')) {
+      classes.hover = props.hover ? theme.colors.background.hover[props.color][props.variant] : null;
+    }
+  
+    if (include.includes('borderRadius')) {
+      classes.borderRadius = theme.borderRadius[props.rounded];
+    }
+  
+    if (include.includes('shadow')) {
+      classes.shadow = theme.shadow[component];
+    }
+  
+    if (include.includes('padding')) {
+      classes.padding = theme.padding[component];
+    }
+  
+    if (include.includes('size')) {
+      classes.size = theme.size[component]?.[props.size];
+    }
+  
+    if (debug) {
+      console.log(`Classes for ${component}:`, classes);
+    }
+  
+    // Filter out undefined or null classes and return a flattened string
+    return classes;
+  };
+  return { theme, getClasses, getClassesObject, getClass }
 }

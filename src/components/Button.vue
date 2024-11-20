@@ -67,7 +67,6 @@ const classes = computed(() => {
                 break
         }
     }
-    console.log(getClasses(props, 'button'))
-    return getClasses(props, 'button', ['']) + ' ' + position
+    return getClasses(props, 'button') + ' ' + position
 })
 </script>
