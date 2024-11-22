@@ -102,12 +102,13 @@ export const theme = {
     padding: {
         base: 'p-4',
         alert: 'p-5',
-        card: 'p-4'
+        card: 'p-8',
+        modal: 'p-8'
     },
     size: {
         modal: {
             small: 'max-w-md',
-            medium: 'max-w-large',
+            medium: 'max-w-xl',
             large: 'max-w-3xl',
             'extra-large': 'max-w-6xl'
         },

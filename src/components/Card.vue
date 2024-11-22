@@ -74,7 +74,7 @@ const classes = computed(() => {
                 break
             
         }
-        return getClasses(props, 'button') + ' ' + imgPosition
+        return getClasses(props, 'button', {exclude: ['padding'], }) + ' ' + imgPosition
     }
     return getClasses(props, 'card', {exclude: ['padding'], })
 })
