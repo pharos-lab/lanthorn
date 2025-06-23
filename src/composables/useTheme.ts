@@ -1,13 +1,17 @@
 import { type Theme } from "../types"
 import { twMerge } from 'tailwind-merge'
 
+const staticProperties = ['background', 'foreground']
+
 export function useTheme(theme:Theme) {
-    function getClass(component:string, overrideClass = '') {
-        const colorConfig = theme.colors.default
+
+    function getClass(component:string, color: string = 'default', overrideClass: string = '') {
+        
+        const colorConfig = theme.colors?.[color] || {}
         const componentConfig = theme.components?.[component] || {}
 
         const colorClasses = Object.entries(colorConfig).flatMap(([key, value]) => {
-            if (key === 'background' || key === 'foreground') return value
+            if (staticProperties.includes(key)) return value
         
             return componentConfig[key as keyof typeof componentConfig] ? value : ''
         })

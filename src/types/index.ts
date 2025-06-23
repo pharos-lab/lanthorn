@@ -18,5 +18,5 @@ export type Theme = {
 
 export type Pharos = {
   theme: Theme
-  getClass: (component: string, overrideClass?: string) => string
+  getClass: (component: string, color?: string, overrideClass?: string) => string
 }
