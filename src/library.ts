@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 
 import * as components from './components/index.ts';
-
+import { useTheme } from './composables/useTheme';
 import { pharos } from './themes/pharos.ts';
 
 const lantern = {
@@ -11,7 +11,7 @@ const lantern = {
         app.component(componentName, component);
       }
 
-      app.provide('pharos', pharos)
+      app.provide('pharos', useTheme(pharos))
     }
 };
 
