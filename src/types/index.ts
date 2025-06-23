@@ -1,7 +1,17 @@
 export type Theme = {
+  colors: {
+    [key: string]: {
+      background: string,
+      foreground: string,
+      hover: string,
+      focus: string,
+      active: string
+    }
+  }
   components: {
     [key: string]: {
-      class?: string
+      class?: string,
+      hover?: Boolean,
     }
   }
 }

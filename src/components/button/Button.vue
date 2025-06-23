@@ -23,8 +23,8 @@ import { inject, type HTMLAttributes } from 'vue'
 import { type Pharos } from '../../types';
 
 const props = defineProps<{
-    href: string,
-    class: HTMLAttributes['class']
+    href?: string,
+    class?: HTMLAttributes['class'],
 }>()
 
 const pharos = inject<Pharos>('pharos')
