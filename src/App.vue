@@ -3,7 +3,7 @@
 
 <template>
   <div class="p-8">
-    ok
+    <Button>ok</Button>
   </div>
 </template>
 

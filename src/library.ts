@@ -1,12 +1,13 @@
+import type { App } from 'vue'
+
 import * as components from './components/index.ts';
 
 import { pharos } from './themes/pharos.ts';
 
 const lantern = {
-    install(app, options) {
+    install(app: App, options = {}) {
       // components
-      for (const componentName in components) {
-        const component = components[componentName];
+      for (const [componentName, component] of Object.entries(components)) {
         app.component(componentName, component);
       }
 
