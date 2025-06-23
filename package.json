@@ -1,8 +1,19 @@
 {
-  "name": "lanthorn",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@pharos-labo/lanthorn",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/lanthorn.umd.cjs",
+  "module": "./dist/lanthorn.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lanthorn.js",
+      "require": "./dist/lanthorn.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
