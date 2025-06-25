@@ -3,20 +3,21 @@ export type Theme = {
     [key: string]: {
       background: string,
       foreground: string,
-      hover: string,
-      focus: string,
-      active: string
+      hover?: string,
+      focus?: string,
+      active?: string
     }
   }
   components: {
     [key: string]: {
       class?: string,
       hover?: Boolean,
+      border?: Boolean
     }
   }
 }
 
 export type Pharos = {
   theme: Theme
-  getClass: (component: string, color?: string, overrideClass?: string) => string
+  getClass: (component: string, props:any, override?: string) => string
 }

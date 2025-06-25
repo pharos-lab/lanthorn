@@ -3,7 +3,7 @@
         v-if="props.href"
         :href="props.href" 
         class="l-button"
-        :class="pharos?.getClass('button', props.color, props.class)"
+        :class="pharos?.getClass('button', props)"
         
     >
         <slot></slot>
@@ -12,7 +12,7 @@
     <button
         v-else
         type="button"
-        :class="pharos?.getClass('button', props.color, props.class)"
+        :class="pharos?.getClass('button', props)"
         class="l-button">
         <slot></slot>
     </button>
@@ -25,8 +25,10 @@ import { type Pharos } from '../../types';
 const props = defineProps<{
     href?: string,
     class?: HTMLAttributes['class'],
-    color?: string
+    color?: string,
+    focus: Boolean
 }>()
+
 
 const pharos = inject<Pharos>('pharos')
 </script>

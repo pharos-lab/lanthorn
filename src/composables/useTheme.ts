@@ -5,17 +5,24 @@ const staticProperties = ['background', 'foreground']
 
 export function useTheme(theme:Theme) {
 
-    function getClass(component:string, color: string = 'default', overrideClass: string = '') {
+    function getClass(component:string, props: any, override?: string) {
         
-        const colorConfig = theme.colors?.[color] || {}
+        const colorConfig = theme.colors?.[props.color || 'default'] || {}
+        
         const componentConfig = theme.components?.[component] || {}
 
         const colorClasses = Object.entries(colorConfig).flatMap(([key, value]) => {
-            if (staticProperties.includes(key)) return value
-        
+            
+            if (staticProperties.includes(key) || props[key]) return value
+
+            if (!props[key]) {
+                return
+            }
+            
             return componentConfig[key as keyof typeof componentConfig] ? value : ''
         })
-        return twMerge(colorClasses, componentConfig.class || '', overrideClass)
+        
+        return twMerge(componentConfig.class || '', colorClasses, override)
     }    
 
     return { theme, getClass }
