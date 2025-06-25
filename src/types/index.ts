@@ -1,9 +1,12 @@
 export type Theme = {
   colors: {
     [key: string]: {
-      background: string,
-      foreground: string,
-      [key: string]: string
+      base: {
+        [key: string]: string
+      },
+      variants: {
+        [key: string]: string
+      }
     }
   }
   components: {

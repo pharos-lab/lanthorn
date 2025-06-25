@@ -12,7 +12,8 @@ export function useStyleAttrs(pharos: Pharos | undefined) {
 
     return [
       'color',
-      ...Object.keys(colorConfig),
+      'variant',
+      ...Object.keys(colorConfig.base),
     ]
   })
 

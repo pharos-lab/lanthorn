@@ -1,4 +1,4 @@
-import { type PluginOptions, type Theme } from "../types"
+import { type PluginOptions } from "../types"
 import { twMerge } from 'tailwind-merge'
 
 const staticProperties = ['background', 'foreground']
@@ -12,9 +12,9 @@ export function useTheme(options: PluginOptions) {
         
         const componentConfig = options.theme.components?.[component] || {}
         
-        const colorClasses = Object.entries(colorConfig).map(([key, value]) => {
-            
-            if (staticProperties.includes(key) || props[key] || props[key] == '') return value
+        const colorClasses = Object.entries({...colorConfig.base, ...colorConfig.variants}).map(([key, value]) => {
+
+            if (staticProperties.includes(key) || props[key] || props[key] === '' || props.variant == key) return value
 
             if (props[key] == false) {
                 return ''
