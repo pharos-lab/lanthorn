@@ -3,7 +3,7 @@ import type { Pharos } from '../types'
 
 export function useStyleAttrs(pharos: Pharos | undefined) {
   const attrs = useAttrs()
-
+  
   const themeKeys = computed(() => {
     if (!pharos) return []
 

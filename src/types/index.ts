@@ -11,8 +11,7 @@ export type Theme = {
   components: {
     [key: string]: {
       class?: string,
-      hover?: Boolean,
-      border?: Boolean
+      props?: string[]
     }
   }
 }

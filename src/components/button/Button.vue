@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, useAttrs } from 'vue'
+import { inject } from 'vue'
 import { type Pharos } from '../../types';
 import { useStyleAttrs } from '../../composables/useStyleAttrs'
 

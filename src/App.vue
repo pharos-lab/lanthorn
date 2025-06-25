@@ -3,7 +3,7 @@
 
 <template>
   <div class="p-8">
-    <Button class="p-3">override</Button>
+    <Button dark>override</Button>
   </div>
 </template>
 
