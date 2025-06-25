@@ -3,9 +3,7 @@ export type Theme = {
     [key: string]: {
       background: string,
       foreground: string,
-      hover?: string,
-      focus?: string,
-      active?: string
+      [key: string]: string
     }
   }
   components: {
@@ -19,4 +17,9 @@ export type Theme = {
 export type Pharos = {
   theme: Theme
   getClass: (component: string, props:any, override?: string) => string
+}
+
+export type PluginOptions = {
+  theme: Theme,
+  defaultColor: string
 }

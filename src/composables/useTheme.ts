@@ -1,16 +1,16 @@
-import { type Theme } from "../types"
+import { type PluginOptions, type Theme } from "../types"
 import { twMerge } from 'tailwind-merge'
 
 const staticProperties = ['background', 'foreground']
 
-export function useTheme(theme:Theme) {
+export function useTheme(options: PluginOptions) {
 
     function getClass(component:string, props: any, override?: string) {
-        const color = props.color || 'default'
+        const color = props.color || options.defaultColor || 'default'
 
-        const colorConfig = theme.colors?.[color] || {}
+        const colorConfig = options.theme.colors?.[color] || {}
         
-        const componentConfig = theme.components?.[component] || {}
+        const componentConfig = options.theme.components?.[component] || {}
         
         const colorClasses = Object.entries(colorConfig).map(([key, value]) => {
             
@@ -26,5 +26,5 @@ export function useTheme(theme:Theme) {
         return twMerge(componentConfig.class || '', colorClasses, override)
     }    
 
-    return { theme, getClass }
+    return { theme: options.theme, getClass }
 }
