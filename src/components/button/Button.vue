@@ -31,7 +31,7 @@ const { attrs, visibleAttrs } = useStyleAttrs(pharos)
 
 const props = defineProps<{
     href?: string,
-    [key: string]: unknown
+    [key: string]: string | Boolean | undefined
 }>()
 
 defineOptions({

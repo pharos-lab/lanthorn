@@ -5,7 +5,8 @@ const staticProperties = ['background', 'foreground']
 
 export function useTheme(options: PluginOptions) {
 
-    function getClass(component:string, props: any, override?: string) {
+    function getClass(component:string, props: any) {
+        
         const color = props.color || options.defaultColor || 'default'
 
         const colorConfig = options.theme.colors?.[color] || {}
@@ -20,10 +21,10 @@ export function useTheme(options: PluginOptions) {
                 return ''
             }
             
-            return componentConfig.props?.includes(key) ? value : ''
+            return componentConfig.apply?.includes(key) ? value : ''
         }).filter(Boolean)
     
-        return twMerge(componentConfig.class || '', colorClasses, override)
+        return twMerge(componentConfig.class || '', colorClasses)
     }    
 
     return { theme: options.theme, getClass }

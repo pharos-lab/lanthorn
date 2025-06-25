@@ -2,9 +2,9 @@ const pharos = {
     colors: {
         default: {
             base: {
-                background: 'bg-slate-100',
+                background: 'bg-slate-50',
                 foreground: 'text-slate-700',
-                hover: 'hover:bg-slate-200',
+                hover: 'hover:bg-slate-100',
                 border: 'border border-slate-500',
                 focus: 'focus:ring-2 focus:ring-slate-500/50 focus:ring-offset-1',
             },
@@ -17,7 +17,7 @@ const pharos = {
     components: {
         button: {
             class: 'px-3 py-2 rounded-lg font-semibold',
-            props: ['hover']
+            apply: ['focus', 'border', 'hover']
         }
     }
 }

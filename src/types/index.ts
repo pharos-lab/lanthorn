@@ -12,7 +12,7 @@ export type Theme = {
   components: {
     [key: string]: {
       class?: string,
-      props?: string[]
+      apply?: string[]
     }
   }
 }
