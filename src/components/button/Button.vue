@@ -3,7 +3,8 @@
         v-if="props.href"
         :href="props.href" 
         class="l-button"
-        :class="pharos?.getClass('button', props)"
+        :class="pharos?.getClass('button', attrs)"
+        v-bind="visibleAttrs"
         
     >
         <slot></slot>
@@ -12,23 +13,32 @@
     <button
         v-else
         type="button"
-        :class="pharos?.getClass('button', props)"
-        class="l-button">
+        :class="pharos?.getClass('button', attrs)"
+        class="l-button"
+        v-bind="visibleAttrs"
+    >
         <slot></slot>
     </button>
 </template>
 
 <script setup lang="ts">
-import { inject, type HTMLAttributes } from 'vue'
+import { inject, useAttrs } from 'vue'
 import { type Pharos } from '../../types';
+import { useStyleAttrs } from '../../composables/useStyleAttrs'
+
+const pharos = inject<Pharos>('pharos')
+const { attrs, visibleAttrs } = useStyleAttrs(pharos)
 
 const props = defineProps<{
     href?: string,
-    class?: HTMLAttributes['class'],
-    color?: string,
-    focus: Boolean
+    [key: string]: unknown
 }>()
 
+defineOptions({
+  inheritAttrs: false
+})
 
-const pharos = inject<Pharos>('pharos')
+
+
+
 </script>

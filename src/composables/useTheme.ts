@@ -15,7 +15,7 @@ export function useTheme(theme:Theme) {
             
             if (staticProperties.includes(key) || props[key]) return value
 
-            if (!props[key]) {
+            if (props[key] == false) {
                 return
             }
             

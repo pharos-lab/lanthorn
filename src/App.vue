@@ -3,7 +3,7 @@
 
 <template>
   <div class="p-8">
-    <Button class="p-3" color="danger" :focus="true">override</Button>
+    <Button class="p-3">override</Button>
   </div>
 </template>
 

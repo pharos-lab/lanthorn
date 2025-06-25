@@ -4,7 +4,8 @@ const pharos = {
             background: 'bg-slate-100',
             foreground: 'text-slate-700',
             hover: 'hover:bg-slate-200',
-            border: 'border border-slate-500'
+            border: 'border border-slate-500',
+            focus: 'focus:ring-2 focus:ring-slate-500/50 focus:ring-offset-1',
         },
         'danger': {
             background: 'bg-red-100',
@@ -12,21 +13,14 @@ const pharos = {
             hover: 'hover:bg-red-200',
             border: 'border border-red-500',
             focus: 'focus:ring-2 focus:ring-red-500/50 focus:ring-offset-1',
-            variants: {
-                outline: {
-                    background: 'bg-white',
-                    foreground: 'text-red-500',
-                    hover: 'hover:bg-red-500 hover:text-white',
-                    border: 'border border-red-500',
-                }
-            }
+            other: 'some class',
+            other2: 'some otherclass'
         },
     },
     components: {
         button: {
-            class: 'px-3 py-2 rounded-lg font-semibold  ',
-            hover: true,
-            focus: false
+            class: 'px-3 py-2 rounded-lg font-semibold',
+            props: ['hover', 'focus']
         }
     }
 }
