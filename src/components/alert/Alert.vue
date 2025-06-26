@@ -7,7 +7,7 @@
       v-bind="visibleAttrs"
     >
       <X
-        v-if="props.dismissible !== false"
+        v-if="props.dismissable"
         class="float-right cursor-pointer rounded"
         @click="isOpen = false"
       />
@@ -21,11 +21,11 @@ import { ref, type HTMLAttributes } from 'vue'
 import { X } from 'lucide-vue-next'
 import { usePharosComponent } from '../../composables/usePharosComponent'
 
-const props = defineProps<{ 
+const props = withDefaults(defineProps<{ 
     class?: HTMLAttributes['class'],
-    dismissable: Boolean,
+    dismissable?: Boolean,
     [key: string]: string | Boolean | undefined
-}>()
+}>(), { dismissable: () => true })
 const isOpen = ref(true)
 
 defineOptions({
