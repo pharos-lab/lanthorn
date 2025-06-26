@@ -22,12 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { inject, type HTMLAttributes } from 'vue'
-import { type Pharos } from '../../types';
-import { useStyleAttrs } from '../../composables/useStyleAttrs'
-
-const pharos = inject<Pharos>('pharos')
-const { attrs, visibleAttrs } = useStyleAttrs(pharos)
+import { type HTMLAttributes } from 'vue'
+import { usePharosComponent } from '../../composables/usePharosComponent'
 
 const props = defineProps<{
     href?: string,
@@ -38,4 +34,6 @@ const props = defineProps<{
 defineOptions({
   inheritAttrs: false
 })
+
+const { pharos, attrs, visibleAttrs } = usePharosComponent()
 </script>

@@ -17,22 +17,21 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, type HTMLAttributes } from 'vue'
+import { ref, type HTMLAttributes } from 'vue'
 import { X } from 'lucide-vue-next'
-import { useStyleAttrs } from '../../composables/useStyleAttrs'
-import type { Pharos } from '../../types'
+import { usePharosComponent } from '../../composables/usePharosComponent'
 
-const pharos = inject<Pharos>('pharos')
 const props = defineProps<{ 
     class?: HTMLAttributes['class']
     [key: string]: string | Boolean | undefined
 }>()
 const isOpen = ref(true)
-const { attrs, visibleAttrs } = useStyleAttrs(pharos)
 
 defineOptions({
   inheritAttrs: false
 })
+
+const { pharos, attrs, visibleAttrs } = usePharosComponent()
 </script>
 
 <style scoped>
