@@ -37,12 +37,18 @@ const pharos = {
             small: 'rounded-sm',
             large: 'rounded-lg',
             circle: 'rounded-full'
+        },
+        shadow: {
+            base: 'shadow'
         }
     },
     components: {
         button: {
             class: 'px-3 py-2 rounded-lg font-semibold',
             apply: ['focus', 'hover', 'outline']
+        },
+        alert: {
+            class: 'p-4 rounded'
         }
     }
 }

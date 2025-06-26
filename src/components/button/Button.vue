@@ -31,15 +31,11 @@ const { attrs, visibleAttrs } = useStyleAttrs(pharos)
 
 const props = defineProps<{
     href?: string,
-    class: HTMLAttributes['class']
+    class?: HTMLAttributes['class']
     [key: string]: string | Boolean | undefined
 }>()
 
 defineOptions({
   inheritAttrs: false
 })
-
-
-
-
 </script>

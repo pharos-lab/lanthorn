@@ -1,3 +1,4 @@
-import Button from "./button/Button.vue";
+import Button from "./button/Button.vue"
+import Alert from "./alert/Alert.vue"
 
-export { Button }
+export { Button, Alert }
