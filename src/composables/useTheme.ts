@@ -3,17 +3,23 @@ import { twMerge } from 'tailwind-merge'
 
 const staticProperties = ['background', 'foreground']
 
-export function useTheme(options: PluginOptions) {
+export function useTheme(options?: PluginOptions) {
 
     function getClass(component:string, props: any) {
         
-        const color = props.color || options.defaultColor || 'default'
+        const color = props.color || options?.defaultColor || 'default'
 
-        const colorConfig = options.theme.colors?.[color] || {}
+        const colorConfig = options?.theme.colors?.[color]
         
-        const componentConfig = options.theme.components?.[component] || {}
+        const componentConfig = options?.theme.components?.[component]
+
+        componentConfig?.apply?.map(apply => {
+            if(!(Object.keys(colorConfig?.base || {}).includes(apply) || Object.keys(colorConfig?.variants || {}).includes(apply))) {
+                console.warn( `[theme warning] "${apply}" is listed in componentConfig.apply but doesn't exist in color theme "${color}".`)
+            }
+        })
         
-        const colorClasses = Object.entries({...colorConfig.base, ...colorConfig.variants}).map(([key, value]) => {
+        const colorClasses = Object.entries({...colorConfig?.base, ...colorConfig?.variants}).map(([key, value]) => {
 
             if (staticProperties.includes(key) || props[key] || props[key] === '' || props.variant == key) return value
 
@@ -21,11 +27,11 @@ export function useTheme(options: PluginOptions) {
                 return ''
             }
             
-            return componentConfig.apply?.includes(key) ? value : ''
+            return componentConfig?.apply?.includes(key) ? value : ''
         }).filter(Boolean)
     
-        return twMerge(componentConfig.class || '', colorClasses)
+        return twMerge(componentConfig?.class || '', colorClasses)
     }    
 
-    return { theme: options.theme, getClass }
+    return { theme: options?.theme, getClass }
 }
