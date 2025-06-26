@@ -3,11 +3,11 @@
     <div
       v-show="isOpen"
       class="l-alert"
-      :class="pharos?.getClass('alert', attrs, props.class)"
+      :class="pharosClass('alert', props.class)"
       v-bind="visibleAttrs"
     >
       <X
-        v-if="attrs.dismissible !== false"
+        v-if="props.dismissible !== false"
         class="float-right cursor-pointer rounded"
         @click="isOpen = false"
       />
@@ -22,7 +22,8 @@ import { X } from 'lucide-vue-next'
 import { usePharosComponent } from '../../composables/usePharosComponent'
 
 const props = defineProps<{ 
-    class?: HTMLAttributes['class']
+    class?: HTMLAttributes['class'],
+    dismissable: Boolean,
     [key: string]: string | Boolean | undefined
 }>()
 const isOpen = ref(true)
@@ -31,7 +32,7 @@ defineOptions({
   inheritAttrs: false
 })
 
-const { pharos, attrs, visibleAttrs } = usePharosComponent()
+const { visibleAttrs, pharosClass } = usePharosComponent()
 </script>
 
 <style scoped>

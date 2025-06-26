@@ -3,7 +3,7 @@
         v-if="props.href"
         :href="props.href" 
         class="l-button"
-        :class="pharos?.getClass('button', attrs, props.class)"
+        :class="pharosClass('button', props.class)"
         v-bind="visibleAttrs"
         
     >
@@ -13,7 +13,7 @@
     <button
         v-else
         type="button"
-        :class="pharos?.getClass('button', attrs, props.class)"
+        :class="pharosClass('button', props.class)"
         class="l-button"
         v-bind="visibleAttrs"
     >
@@ -35,5 +35,5 @@ defineOptions({
   inheritAttrs: false
 })
 
-const { pharos, attrs, visibleAttrs } = usePharosComponent()
+const { visibleAttrs, pharosClass } = usePharosComponent()
 </script>

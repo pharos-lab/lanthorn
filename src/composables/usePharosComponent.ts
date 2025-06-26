@@ -7,9 +7,13 @@ export function usePharosComponent() {
   const pharos = inject<Pharos>('pharos')
   const { attrs, visibleAttrs } = useStyleAttrs(pharos)
 
+  const pharosClass = (component: string, userClass?: string) =>
+    pharos?.getClass(component, attrs, userClass)
+
   return {
     pharos,
     attrs,
-    visibleAttrs
+    visibleAttrs,
+    pharosClass
   }
 }

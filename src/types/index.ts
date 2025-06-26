@@ -14,7 +14,7 @@ export type ColorTheme = {
 
 export type Pharos = {
   theme: Theme
-  getClass: (component: string, props:any, override: string) => string
+  getClass: (component: string, props:any, override?: string) => string
 }
 
 export type PluginOptions = {
