@@ -11,5 +11,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/library.ts", "src/components/index.ts", "src/cli/add.js", "src/cli/index.js"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/library.ts", "src/components/index.ts", "cli/add.js", "cli/index.js"]
 }

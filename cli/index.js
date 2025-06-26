@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { add } from './add.ts'
+import { add } from './add.js'
 import { Command } from 'commander'
 
 const program = new Command()
