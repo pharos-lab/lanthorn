@@ -27,10 +27,22 @@ const pharos = {
             }
         }
     },
+    props: {
+        size: {
+            sm: 'text-sm px-1 py-px',
+            md: 'text-sm px-1 py-px',
+            lg: 'text-2xl px-3 py-2',
+        },
+        radius: {
+            small: 'rounded-sm',
+            large: 'rounded-lg',
+            circle: 'rounded-full'
+        }
+    },
     components: {
         button: {
             class: 'px-3 py-2 rounded-lg font-semibold',
-            apply: ['focus', 'hover', 'outline', 'nice']
+            apply: ['focus', 'hover', 'outline']
         }
     }
 }

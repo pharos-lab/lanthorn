@@ -9,11 +9,13 @@ export function useStyleAttrs(pharos: Pharos | undefined) {
 
     const color = attrs.color as string || 'default'
     const colorConfig = pharos.theme.colors?.[color] || {}
+    const propsConfig = pharos.theme.props
 
     return [
       'color',
       'variant',
-      ...Object.keys(colorConfig.base),
+      ...Object.keys(colorConfig.base || {}),
+      ...Object.keys(propsConfig || {})
     ]
   })
 
