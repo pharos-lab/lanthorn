@@ -5,13 +5,13 @@ const staticProperties = ['background', 'foreground']
 
 export function useTheme(options?: PluginOptions) {
 
-    function getClass(component:string, props: any) {
+    function getClass(component:string, props: any, override?: string) {
         
         const colorClasses =  getColorClasses(component, props)
         const propsClasses = getPropsClasses(props)
         const componentClasses = options?.theme.components?.[component]?.class
         
-        return twMerge(componentClasses, propsClasses, colorClasses)
+        return twMerge(componentClasses, propsClasses, colorClasses, override)
     }
 
     function getColorClasses(component:string, props: any) {
@@ -23,7 +23,7 @@ export function useTheme(options?: PluginOptions) {
             console.warn(`[theme warning] Color "${color}" is not defined in theme.`)
             return []
         }
-        
+
         const componentConfig = options?.theme.components?.[component]
 
         // Warn if apply's value is not in color's config
