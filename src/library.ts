@@ -5,9 +5,15 @@ import type { PluginOptions } from './types/index.ts';
 
 const lantern = {
     install(app: App, options?: PluginOptions) {
-      // components
-      for (const [componentName, component] of Object.entries(components)) {
-        app.component(componentName, component);
+  
+      const entries = Object.entries(components)
+
+      const toRegister = options?.components
+        ? entries.filter(([name]) => options.components?.includes(name))
+        : entries
+
+      for (const [name, component] of toRegister) {
+        app.component(name, component)
       }
 
       app.provide('pharos', useTheme(options))

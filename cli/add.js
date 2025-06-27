@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export async function add(componentName, outDir = 'src/components/ui') {
-  const src = path.resolve(__dirname, '../src/components', componentName.toLowerCase(), `${componentName}.vue`)
-  const dest = path.resolve(process.cwd(), outDir, componentName.toLowerCase(), `${componentName}.vue`)
+  const src = path.resolve(__dirname, '../src/components', componentName.toLowerCase())
+  const dest = path.resolve(process.cwd(), outDir, componentName.toLowerCase())
   
   if (!fs.existsSync(src)) {
     console.error(`[lanthorn] Component "${componentName}" not found.`)

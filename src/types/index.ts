@@ -19,5 +19,6 @@ export type Pharos = {
 
 export type PluginOptions = {
   theme: Theme,
-  defaultColor?: string
+  defaultColor?: string,
+  components?: string[]
 }

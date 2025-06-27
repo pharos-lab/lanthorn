@@ -6,5 +6,6 @@ import { lantern } from './library'
 
 createApp(App).use(lantern, {
     theme: pharos,
-    defaultColor: 'default'
+    defaultColor: 'default',
+    components: ['Alert']
 }).mount('#app')
