@@ -5,7 +5,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './component
 
 <template>
   <div class="p-8 space-y-8">
-    <Button size="lg" class="p-7">override</Button>
+    <Button class="">override</Button>
     <Alert color="primary" dismissable="false">Oops! something went wrong!</Alert>
 
     <Collapsible :open="true">

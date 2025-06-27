@@ -8,7 +8,7 @@ export function useTheme(options?: PluginOptions) {
     function getClass(component:string, props: any, override?: string) {
         
         const colorClasses =  getColorClasses(component, props)
-        const propsClasses = getPropsClasses(props)
+        const propsClasses = getPropsClasses(component, props)
         const componentClasses = options?.theme.components?.[component]?.class
         
         return twMerge(componentClasses, propsClasses, colorClasses, override)
@@ -28,28 +28,35 @@ export function useTheme(options?: PluginOptions) {
 
         // Warn if apply's value is not in color's config
         componentConfig?.apply?.forEach(apply => {
-            if(!(Object.keys(colorConfig?.base || {}).includes(apply) || Object.keys(colorConfig?.variants || {}).includes(apply))) {
+            if(!(Object.keys(colorConfig).includes(apply))) {
                 console.warn( `[theme warning] "${apply}" is listed in componentConfig.apply but doesn't exist in color theme "${color}".`)
             }
         })
         
-        const colorClasses = Object.entries({...colorConfig?.base, ...colorConfig?.variants}).map(([key, value]) => {
+        const colorClasses = Object.entries(colorConfig).map(([key, value]) => {
 
-            if (staticProperties.includes(key) || props[key] || props[key] === '' || props.variant == key) return value
+            if (staticProperties.includes(key) || props[key] || props[key] === '') return value
 
             if (props[key] == false) {
                 return ''
             }
             
             return componentConfig?.apply?.includes(key) ? value : ''
-        }).filter(Boolean)
-    
+        }).filter(Boolean).join(' ')
+        
         return colorClasses
     }
 
-    function getPropsClasses(props: any) {
+    function getPropsClasses(component: string, props: any) {
         // Appliquer les props génériques du thème
         const classes: string[] = []
+
+        Object.entries(options?.theme.components[component].props || {}).forEach(([key, value]) => {
+            
+            if (options?.theme.props?.[key] && options?.theme.props[key][value as string]) {
+                classes.push(options?.theme.props[key][value as string])
+            }
+        })
 
         Object.entries(props).forEach(([key, value]) => {
             if (options?.theme.props?.[key] && options?.theme.props[key][value as string]) {

@@ -1,16 +1,13 @@
 export type Theme = {
-  colors: Record<string, ColorTheme>,
+  colors: Record<string, string>,
   props: Record<string, {[key:string]: string}>,
   components: Record<string, {
     class?: string
     apply?: string[]
+    props?: Record<string, unknown>
   }>
 }
 
-export type ColorTheme = {
-  base: Record<string, string>
-  variants?: Record<string, string>
-}
 
 export type Pharos = {
   theme: Theme
