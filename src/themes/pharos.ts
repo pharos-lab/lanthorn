@@ -29,7 +29,7 @@ const pharos = {
             class: 'px-3 py-2 rounded-lg font-semibold',
             apply: ['focus', 'hover', 'outline'],
             props: {
-                size: 'lg'
+                size: 'md'
             }
         },
         Alert: {

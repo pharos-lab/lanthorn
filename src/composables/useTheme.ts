@@ -48,16 +48,17 @@ export function useTheme(options?: PluginOptions) {
     }
 
     function getPropsClasses(component: string, props: any) {
-        // Appliquer les props génériques du thème
         const classes: string[] = []
 
-        Object.entries(options?.theme.components[component].props || {}).forEach(([key, value]) => {
+        // Get the classes from theme's components 's prop
+        Object.entries(options?.theme.components[component]?.props || {}).forEach(([key, value]) => {
             
             if (options?.theme.props?.[key] && options?.theme.props[key][value as string]) {
                 classes.push(options?.theme.props[key][value as string])
             }
         })
 
+        //get the classes from component's prop
         Object.entries(props).forEach(([key, value]) => {
             if (options?.theme.props?.[key] && options?.theme.props[key][value as string]) {
                 classes.push(options?.theme.props[key][value as string])
