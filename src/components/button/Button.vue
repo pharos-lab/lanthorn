@@ -13,7 +13,7 @@
     <button
         v-else
         type="button"
-        :class="pharosClass('button', props.class)"
+        :class="pharosClass('Button', props.class)"
         class="l-button"
         v-bind="visibleAttrs"
     >

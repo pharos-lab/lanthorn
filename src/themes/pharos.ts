@@ -43,12 +43,21 @@ const pharos = {
         }
     },
     components: {
-        button: {
+        Button: {
             class: 'px-3 py-2 rounded-lg font-semibold',
             apply: ['focus', 'hover', 'outline']
         },
-        alert: {
+        Alert: {
             class: 'p-4 rounded'
+        },
+        Collapsible: {
+            class: 'rounded-lg'
+        },
+        CollapsibleTrigger: {
+            class: 'p-4'
+        },
+        CollapsibleContent: {
+            class: 'p-4'
         }
     }
 }

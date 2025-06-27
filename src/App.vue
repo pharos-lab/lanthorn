@@ -8,7 +8,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './component
     <Button size="lg" class="p-7">override</Button>
     <Alert color="primary" dismissable="false">Oops! something went wrong!</Alert>
 
-    <Collapsible>
+    <Collapsible :open="true">
       <CollapsibleTrigger>click</CollapsibleTrigger>
       <CollapsibleContent>nice</CollapsibleContent>
     </Collapsible>
@@ -16,5 +16,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './component
 </template>
 
 <style scoped>
-
+.l-collapsible-content-wrapper {
+  transition: all;
+  transition-duration: 500ms;
+}
 </style>

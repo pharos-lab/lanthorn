@@ -1,13 +1,18 @@
 <template>
     <div
         ref="inner"
-        class="l-collapsible-content overflow-hidden transition-all duration-500 ease-in-out"
-        :class="pharosClass('CollapsibleContent', props.class)"
+        class="l-collapsible-content-wrapper overflow-hidden"
         :style="{ maxHeight: heightStyle }"
-        :data-expended="collapsible?.isOpen.value"
-        v-bind="visibleAttrs"
-      >
+        :data-expanded="collapsible?.isOpen.value"
+        >
+        <div 
+            :data-expanded="collapsible?.isOpen.value"
+            v-bind="visibleAttrs"
+            class="l-collapsible-content"
+            :class="pharosClass('CollapsibleContent', props.class)"
+        >
           <slot></slot>
+        </div>
     </div>
 </template>
 
@@ -21,8 +26,8 @@ const props = defineProps<{
 
 const collapsible = inject<{
     isOpen: Ref<boolean>,
-        toggle: () => void
-    }>('collapsible')
+    toggle: () => void
+}>('collapsible')
     
 const { visibleAttrs, pharosClass } = usePharosComponent()
 
