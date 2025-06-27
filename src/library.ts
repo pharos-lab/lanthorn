@@ -5,15 +5,23 @@ import type { PluginOptions } from './types/index.ts';
 
 const lantern = {
     install(app: App, options?: PluginOptions) {
-  
-      const entries = Object.entries(components)
+      const entries  = Object.entries(components)
+      const toRegister: [string, any][] = []
 
-      const toRegister = options?.components
-        ? entries.filter(([name]) => options.components?.includes(name))
-        : entries
+      if (options?.components) {
+        options.components.forEach(componentName => {
+          const component = entries.find(([entryName]) => entryName == componentName)
+          
+          if (!component) return console.warn(`[lantern] Components registration: "${componentName}" not found. \n Please check the 'components' property in you plugin's options`);
 
-      for (const [name, component] of toRegister) {
-        app.component(name, component)
+          toRegister.push(component)
+        });
+      } else {
+        toRegister.push(...entries)
+      }
+
+      for (const [componentName, component] of toRegister) {
+        app.component(componentName, component);
       }
 
       app.provide('pharos', useTheme(options))
