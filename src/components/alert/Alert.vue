@@ -3,7 +3,7 @@
     <div
       v-show="isOpen"
       class="l-alert"
-      :class="pharosClass('alert', props.class)"
+      :class="pharosClass('Alert', props.class)"
       v-bind="visibleAttrs"
     >
       <X
@@ -24,7 +24,7 @@ import { usePharosComponent } from '../../composables/usePharosComponent'
 const props = withDefaults(defineProps<{ 
     class?: HTMLAttributes['class'],
     dismissable?: Boolean,
-    [key: string]: string | Boolean | undefined
+    [key: string]: unknown
 }>(), { dismissable: () => true })
 const isOpen = ref(true)
 

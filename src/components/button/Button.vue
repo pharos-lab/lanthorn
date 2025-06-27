@@ -3,7 +3,7 @@
         v-if="props.href"
         :href="props.href" 
         class="l-button"
-        :class="pharosClass('button', props.class)"
+        :class="pharosClass('Button', props.class)"
         v-bind="visibleAttrs"
         
     >
@@ -27,8 +27,8 @@ import { usePharosComponent } from '../../composables/usePharosComponent'
 
 const props = defineProps<{
     href?: string,
-    class?: HTMLAttributes['class']
-    [key: string]: string | Boolean | undefined
+    class?: HTMLAttributes['class'],
+    [key: string]: unknown
 }>()
 
 defineOptions({
