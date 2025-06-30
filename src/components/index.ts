@@ -3,11 +3,14 @@ import Alert from "./alert/Alert.vue"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./collapsible"
 import { Accordion, AccordionTrigger, AccordionItem, AccordionContent } from './accordion'
 import { Floating, FloatingContent, FloatingTrigger } from "./floating"
+import { Dropdown, DropdownContent, DropdownTrigger } from "./dropdown"
 
 export { 
     Button, 
     Alert, 
     Collapsible, CollapsibleContent, CollapsibleTrigger,
     Accordion, AccordionContent, AccordionItem, AccordionTrigger,
-    Floating, FloatingContent, FloatingTrigger
+    Floating, FloatingContent, FloatingTrigger,
+    Dropdown, DropdownContent, DropdownTrigger,
+    
  }
