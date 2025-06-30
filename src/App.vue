@@ -8,7 +8,7 @@ const collapsible = useTemplateRef('collapsible')
 
 <template>
   <div class="p-8 space-y-8">
-    <Button @click="collapsible.open()">override</Button>
+    <Button size="lg" type="submit">override</Button>
     <Alert color="primary" dismissable="false">Oops! something went wrong!</Alert>
 
     <Collapsible :open="true">
@@ -30,6 +30,11 @@ const collapsible = useTemplateRef('collapsible')
         <AccordionContent>it is one </AccordionContent>
       </AccordionItem>
     </Accordion>
+
+    <Floating>
+      <FloatingTrigger>click me</FloatingTrigger>
+      <FloatingContent>yeah !!</FloatingContent>
+    </Floating>
   </div>
 </template>
 
