@@ -19,17 +19,46 @@ const props = defineProps<{
     [key: string]: unknown
 }>()
 
+const isOpen = ref(props.open)
+
+const emit = defineEmits<{
+  open: []
+  close: []
+  toggle: [isOpen: Boolean]
+}>()
+
 defineOptions({
   inheritAttrs: false
 })
 
-const { visibleAttrs, pharosClass } = usePharosComponent()
-
-const isOpen = ref(props.open)
-
 const toggle = () => {
+    isOpen.value ? emit('close') : emit('open')
     isOpen.value = !isOpen.value
+    emit('toggle', isOpen.value)
 }
+
+function open() {
+  if (!isOpen.value) {
+    isOpen.value = true
+    emit('open')
+  }
+}
+
+function close() {
+  if (isOpen.value) {
+    isOpen.value = false
+    emit('close')
+  }
+}
+
+defineExpose({
+  open,
+  close,
+  toggle,
+  isOpen
+})
+
+const { visibleAttrs, pharosClass } = usePharosComponent()
 
 provide('collapsible', {
     isOpen,

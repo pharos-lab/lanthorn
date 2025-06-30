@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { useTemplateRef } from 'vue';
+
+const collapsible = useTemplateRef('collapsible')
+
 
 </script>
 
 <template>
   <div class="p-8 space-y-8">
-    <Button >override</Button>
+    <Button @click="collapsible.open()">override</Button>
     <Alert color="primary" dismissable="false">Oops! something went wrong!</Alert>
 
     <Collapsible :open="true">
@@ -12,8 +16,8 @@
       <CollapsibleContent>nice</CollapsibleContent>
     </Collapsible>
 
-    <Accordion>
-      <AccordionItem>
+    <Accordion >
+      <AccordionItem ref="collapsible">
         <AccordionTrigger>one</AccordionTrigger>
         <AccordionContent>it is one </AccordionContent>
       </AccordionItem>
