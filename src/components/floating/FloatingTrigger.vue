@@ -1,7 +1,7 @@
 <template>
     <div 
         class="l-floating-trigger"
-        :class="pharosClass('Floating', floating?.props.class)"
+        :class="pharosClass('FloatingTrigger', props.class)"
         v-on="listeners"
         :data-open="floating?.isOpen.value"
         v-bind="visibleAttrs"
@@ -11,8 +11,13 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, type Ref } from 'vue'
+import { inject, computed, type Ref, type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
+
+const props = defineProps<{
+    class?: HTMLAttributes['class'],
+    [key: string]: unknown
+}>()
 
 const floating = inject<{
      isOpen: Ref, 

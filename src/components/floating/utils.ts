@@ -16,7 +16,7 @@ export function getPlacementClass(placement: string) {
       'right-start': 'left-full ml-2 top-0',
       'right-end': 'left-full ml-2 bottom-0'
     }
-    return map[placement] || ''
+    return map[placement as keyof typeof map] || ''
   }
   
   export function getTransitionName(placement: string) {
@@ -36,6 +36,6 @@ export function getPlacementClass(placement: string) {
       'right-start': 'fade-slide-left',
       'right-end': 'fade-slide-left'
     }
-    return map[placement] || 'fade'
+    return map[placement as keyof typeof map] || 'fade'
   }
   

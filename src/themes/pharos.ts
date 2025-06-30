@@ -44,6 +44,9 @@ const pharos = {
         },
         CollapsibleContent: {
             class: 'p-4'
+        },
+        FloatingTrigger: {
+            class: 'rounded-lg p-4'
         }
     }
 }

@@ -31,8 +31,8 @@ const collapsible = useTemplateRef('collapsible')
       </AccordionItem>
     </Accordion>
 
-    <Floating>
-      <FloatingTrigger>click me</FloatingTrigger>
+    <Floating trigger="hover" :delay="1000">
+      <FloatingTrigger class="bg-red-500">click me</FloatingTrigger>
       <FloatingContent>yeah !!</FloatingContent>
     </Floating>
   </div>

@@ -3,7 +3,7 @@
         <div 
             v-show="floating?.isOpen.value"
             class="absolute z-50 l-floating-content min-w-max"
-            :class="[placementClasses, pharosClass('Floating', floating?.props.class)]"
+            :class="[placementClasses, pharosClass('FloatingContent', props.class)]"
             :style="{ transitionDelay: floating?.props.delay + 'ms' }"
             :data-open="floating?.isOpen.value"
             v-bind="visibleAttrs"
@@ -14,10 +14,15 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, type Ref } from 'vue'
+import { inject, computed, type Ref, type HTMLAttributes } from 'vue'
 
 import { getPlacementClass, getTransitionName } from './utils.js'
 import { usePharosComponent } from '../../composables/usePharosComponent.js'
+
+const props = defineProps<{
+    class?: HTMLAttributes['class'],
+    [key: string]: unknown
+}>()
 
 const floating = inject<{
      isOpen: Ref, 
