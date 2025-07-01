@@ -21,16 +21,44 @@ const props = withDefaults(defineProps<{
     [key: string]: unknown
 }>(), {trigger: () => 'click', placement: () => 'bottom', delay: () => 0})
 
+const emit = defineEmits<{
+  open: []
+  close: []
+  toggle: [isOpen: Boolean]
+}>()
+
 defineOptions({
   inheritAttrs: false
 })
 
 const isOpen = ref(false)
 
-const toggle = () => isOpen.value = !isOpen.value
-const close = () => isOpen.value = false
-const open = () => isOpen.value = true
+const toggle = () => {
+    isOpen.value ? emit('close') : emit('open')
+    isOpen.value = !isOpen.value
+    emit('toggle', isOpen.value)
+}
 
+function open() {
+  if (!isOpen.value) {
+    isOpen.value = true
+    emit('open')
+  }
+}
+
+function close() {
+  if (isOpen.value) {
+    isOpen.value = false
+    emit('close')
+  }
+}
+
+defineExpose({
+  open,
+  close,
+  toggle,
+  isOpen
+})
 provide('floating', { isOpen, toggle, close, open, props })
 
 const { visibleAttrs, pharosClass } = usePharosComponent()

@@ -1,7 +1,7 @@
 <template>
     <FloatingContent 
         class="l-dropdown-content"
-        :class="pharosClass('DropdownTrigger', props.class)"
+        :class="pharosClass('DropdownContent', props.class)"
         v-bind="visibleAttrs" 
     >
       <slot></slot>

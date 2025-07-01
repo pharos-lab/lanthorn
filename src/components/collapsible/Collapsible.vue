@@ -38,17 +38,13 @@ const toggle = () => {
 }
 
 function open() {
-  if (!isOpen.value) {
     isOpen.value = true
     emit('open')
-  }
 }
 
 function close() {
-  if (isOpen.value) {
     isOpen.value = false
     emit('close')
-  }
 }
 
 defineExpose({
