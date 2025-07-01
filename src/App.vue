@@ -2,16 +2,17 @@
 import { useTemplateRef } from 'vue';
 
 const dropdown = useTemplateRef('dropdown')
+const collapsible = useTemplateRef('collapsible')
 
 
 </script>
 
 <template>
   <div class="p-8 space-y-8">
-    <Button size="lg" @click="dropdown?.toggle">override</Button>
+    <Button size="lg" @click="collapsible?.toggle">override</Button>
     <Alert color="primary" dismissable="false">Oops! something went wrong!</Alert>
 
-    <Collapsible :open="true">
+    <Collapsible :open="true" ref="collapsible" @close="console.log('collaped')">
       <CollapsibleTrigger>click</CollapsibleTrigger>
       <CollapsibleContent>nice</CollapsibleContent>
     </Collapsible>

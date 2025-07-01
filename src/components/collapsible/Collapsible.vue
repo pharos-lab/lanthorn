@@ -10,8 +10,10 @@
 </template>
   
 <script setup lang="ts">
-import { provide, ref, type HTMLAttributes } from 'vue'
+import { provide, type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
+import { useOpenable } from '../../composables/useOpenable'
+
 
 const props = defineProps<{
     class?: HTMLAttributes['class'],
@@ -19,42 +21,25 @@ const props = defineProps<{
     [key: string]: unknown
 }>()
 
-const isOpen = ref(props.open)
-
-const emit = defineEmits<{
-  open: []
-  close: []
-  toggle: [isOpen: Boolean]
+const emits = defineEmits<{
+    open: []
+    close: []
+    toggle: [isOpen: Boolean]
 }>()
 
 defineOptions({
-  inheritAttrs: false
+    inheritAttrs: false
 })
 
-const toggle = () => {
-    isOpen.value ? emit('close') : emit('open')
-    isOpen.value = !isOpen.value
-    emit('toggle', isOpen.value)
-}
-
-function open() {
-    isOpen.value = true
-    emit('open')
-}
-
-function close() {
-    isOpen.value = false
-    emit('close')
-}
+const { isOpen, open, close, toggle } = useOpenable({emits})
+const { visibleAttrs, pharosClass } = usePharosComponent()
 
 defineExpose({
-  open,
-  close,
-  toggle,
-  isOpen
+    open,
+    close,
+    toggle,
+    isOpen
 })
-
-const { visibleAttrs, pharosClass } = usePharosComponent()
 
 provide('collapsible', {
     isOpen,

@@ -10,8 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide,type HTMLAttributes } from 'vue'
+import { provide, type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
+import { useOpenable } from '../../composables/useOpenable'
 
 const props = withDefaults(defineProps<{
     class?: HTMLAttributes['class'],
@@ -21,7 +22,7 @@ const props = withDefaults(defineProps<{
     [key: string]: unknown
 }>(), {trigger: () => 'click', placement: () => 'bottom', delay: () => 0})
 
-const emit = defineEmits<{
+const emits = defineEmits<{
   open: []
   close: []
   toggle: [isOpen: Boolean]
@@ -31,27 +32,8 @@ defineOptions({
   inheritAttrs: false
 })
 
-const isOpen = ref(false)
-
-const toggle = () => {
-    isOpen.value ? emit('close') : emit('open')
-    isOpen.value = !isOpen.value
-    emit('toggle', isOpen.value)
-}
-
-function open() {
-  if (!isOpen.value) {
-    isOpen.value = true
-    emit('open')
-  }
-}
-
-function close() {
-  if (isOpen.value) {
-    isOpen.value = false
-    emit('close')
-  }
-}
+const { isOpen, open, close, toggle } = useOpenable({emits})
+const { visibleAttrs, pharosClass } = usePharosComponent()
 
 defineExpose({
   open,
@@ -59,9 +41,9 @@ defineExpose({
   toggle,
   isOpen
 })
+
 provide('floating', { isOpen, toggle, close, open, props })
 
-const { visibleAttrs, pharosClass } = usePharosComponent()
 </script>
 
 <style scoped>

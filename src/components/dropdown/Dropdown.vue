@@ -35,4 +35,3 @@ defineOptions({
 const { visibleAttrs, pharosClass } = usePharosComponent()
 
 </script>
-  
