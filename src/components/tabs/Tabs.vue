@@ -11,13 +11,18 @@
 
 <script setup lang="ts">
 import { ref, computed, provide } from 'vue'
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
   orientation?: 'horizontal' | 'vertical'
   defaultValue?: string
+}>()
+
+const emits = defineEmits<{
+    open: [active: string]
+    active: Ref<string>
 }>()
 
 defineOptions({
@@ -27,10 +32,16 @@ defineOptions({
 const { visibleAttrs, pharosClass } = usePharosComponent()
 const active = ref(props.defaultValue ?? '0')
 
-defineExpose({ active })
+function open(value: string) {
+  active.value = value
+  emits('open', active.value)
+}
+
+defineExpose({ active, open })
 
 provide('tabs', {
   active,
+  open,
   orientation: props.orientation ?? 'horizontal',
 })
 

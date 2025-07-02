@@ -3,6 +3,7 @@ import { useTemplateRef } from 'vue';
 
 const dropdown = useTemplateRef('dropdown')
 const collapsible = useTemplateRef('collapsible')
+const tabs = useTemplateRef('tabs')
 
 
 </script>
@@ -10,7 +11,7 @@ const collapsible = useTemplateRef('collapsible')
 <template>
   <div class="p-8 space-y-8">
 
-    <Tabs defaultValue="one">
+    <Tabs defaultValue="one" ref="tabs" @open="(value:string) => console.log(value)">
       <TabList>
         <TabTrigger value="one">one</TabTrigger>
         <TabTrigger value="two">two</TabTrigger>
@@ -29,7 +30,7 @@ const collapsible = useTemplateRef('collapsible')
 
     <br>
 
-    <Button size="lg" @click="collapsible?.toggle">override</Button>
+    <Button size="lg" @click="tabs?.open('two')">override</Button>
     <Alert color="primary" :dismissable="false">Oops! something went wrong!</Alert>
 
     <Collapsible :open="true" ref="collapsible" @close="console.log('collaped')">
