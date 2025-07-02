@@ -21,7 +21,8 @@ import { inject, computed, ref, type Ref, type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+    class?: HTMLAttributes['class'],
+    [key: string]: unknown
 }>()
 
 const collapsible = inject<{

@@ -15,7 +15,8 @@ import { inject, type HTMLAttributes, type Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+    class?: HTMLAttributes['class'],
+    [key: string]: unknown
 }>()
 
 const { visibleAttrs, pharosClass } = usePharosComponent()

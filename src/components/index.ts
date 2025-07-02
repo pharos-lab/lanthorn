@@ -4,6 +4,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./collapsib
 import { Accordion, AccordionTrigger, AccordionItem, AccordionContent } from './accordion'
 import { Floating, FloatingContent, FloatingTrigger } from "./floating"
 import { Dropdown, DropdownContent, DropdownTrigger } from "./dropdown"
+import { Dialog, DialogContent, DialogTrigger } from "./dialog"
 
 export { 
     Button, 
@@ -12,5 +13,6 @@ export {
     Accordion, AccordionContent, AccordionItem, AccordionTrigger,
     Floating, FloatingContent, FloatingTrigger,
     Dropdown, DropdownContent, DropdownTrigger,
+    Dialog, DialogContent, DialogTrigger,
     
  }

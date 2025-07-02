@@ -9,8 +9,18 @@ const collapsible = useTemplateRef('collapsible')
 
 <template>
   <div class="p-8 space-y-8">
+
+    <Dialog>
+      <DialogTrigger>Open me</DialogTrigger>
+      <DialogContent>
+        it's working!
+      </DialogContent>
+    </Dialog>
+    
+    <br>
+
     <Button size="lg" @click="collapsible?.toggle">override</Button>
-    <Alert color="primary" dismissable="false">Oops! something went wrong!</Alert>
+    <Alert color="primary" :dismissable="false">Oops! something went wrong!</Alert>
 
     <Collapsible :open="true" ref="collapsible" @close="console.log('collaped')">
       <CollapsibleTrigger>click</CollapsibleTrigger>
