@@ -10,13 +10,23 @@ const collapsible = useTemplateRef('collapsible')
 <template>
   <div class="p-8 space-y-8">
 
+    <Tabs defaultValue="one">
+      <TabList>
+        <TabTrigger value="one">one</TabTrigger>
+        <TabTrigger value="two">two</TabTrigger>
+        <TabTrigger value="three">three</TabTrigger>
+      </TabList>
+      <Tab value="one">num 1</Tab>
+      <Tab value="two">num 2</Tab>
+      <Tab value="three">num 3</Tab>
+    </Tabs>
     <Dialog>
       <DialogTrigger>Open me</DialogTrigger>
       <DialogContent>
         it's working!
       </DialogContent>
     </Dialog>
-    
+
     <br>
 
     <Button size="lg" @click="collapsible?.toggle">override</Button>
