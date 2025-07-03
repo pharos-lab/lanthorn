@@ -1,15 +1,22 @@
 import { ref } from 'vue'
+import type { OpenableEmits } from '../types'
+
 
 export function useOpenable(options?: {
-  initialState?: boolean,
-  emits?: ((evt: "open") => void) & ((evt: "close") => void) & ((evt: "toggle", isOpen: Boolean) => void),
+    initilaState?: boolean
+    defaultValue?: string
+    emits?: (evt: keyof OpenableEmits, state?: unknown)  => void,
 }) {
-    const isOpen = ref(options?.initialState || false)
+    const isOpen = ref(options?.initilaState || false)
+    const active = ref(options?.defaultValue)
 
-
-    function open() {
-        isOpen.value = true
-        options?.emits?.('open')
+    function open(value?: string) {
+        if (typeof value === 'string') {
+            active.value = value
+        } else {
+            isOpen.value = true
+        }
+        options?.emits?.('open', active.value)
     }
 
     function close() {
@@ -27,5 +34,6 @@ export function useOpenable(options?: {
         open,
         close,
         toggle, 
+        active
     }
 }

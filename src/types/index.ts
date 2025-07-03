@@ -19,3 +19,9 @@ export type PluginOptions = {
   defaultColor?: string,
   components?: string[]
 }
+
+export type OpenableEmits = {
+  open?: [state?: unknown],
+  close?: [],
+  toggle?: [state: unknown]
+}

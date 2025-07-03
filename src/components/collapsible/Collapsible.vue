@@ -13,6 +13,7 @@
 import { provide, type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
 import { useOpenable } from '../../composables/useOpenable'
+import type { OpenableEmits } from '../../types';
 
 
 const props = defineProps<{
@@ -21,11 +22,7 @@ const props = defineProps<{
     [key: string]: unknown
 }>()
 
-const emits = defineEmits<{
-    open: []
-    close: []
-    toggle: [isOpen: Boolean]
-}>()
+const emits = defineEmits<OpenableEmits>()
 
 defineOptions({
     inheritAttrs: false

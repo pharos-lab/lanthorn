@@ -13,6 +13,8 @@
 import { ref, computed, provide } from 'vue'
 import type { HTMLAttributes, Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
+import { useOpenable } from '../../composables/useOpenable';
+import type { OpenableEmits } from '../../types';
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
@@ -20,22 +22,15 @@ const props = defineProps<{
   defaultValue?: string
 }>()
 
-const emits = defineEmits<{
-    open: [active: string]
-    active: Ref<string>
-}>()
+const emits = defineEmits<OpenableEmits>()
 
 defineOptions({
   inheritAttrs: false,
 })
 
 const { visibleAttrs, pharosClass } = usePharosComponent()
-const active = ref(props.defaultValue ?? '0')
 
-function open(value: string) {
-  active.value = value
-  emits('open', active.value)
-}
+const { open, active } = useOpenable({emits, defaultValue: props.defaultValue})
 
 defineExpose({ active, open })
 
