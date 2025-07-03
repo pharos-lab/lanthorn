@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { provide, type HTMLAttributes } from 'vue'
+import { provide, ref, type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
 
 const props = defineProps<{
@@ -24,7 +24,7 @@ defineOptions({
 })
 
 const { visibleAttrs, pharosClass } = usePharosComponent()
-const model = defineModel()
+const model = ref()
 
 provide('searchList', {
     model,

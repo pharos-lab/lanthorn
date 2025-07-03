@@ -6,6 +6,7 @@ import { Floating, FloatingContent, FloatingTrigger } from "./floating"
 import { Dropdown, DropdownContent, DropdownTrigger } from "./dropdown"
 import { Dialog, DialogContent, DialogTrigger } from "./dialog"
 import { Tab, TabList, TabTrigger, Tabs } from "./tabs"
+import { SearchList, SearchListInput, SearchListItem, SearchListItems } from "./searchList"
 
 export { 
     Button, 
@@ -16,5 +17,7 @@ export {
     Dropdown, DropdownContent, DropdownTrigger,
     Dialog, DialogContent, DialogTrigger,
     Tab, TabList, TabTrigger, Tabs,
+    SearchList, SearchListInput, SearchListItem, SearchListItems,
+    
     
  }

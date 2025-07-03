@@ -11,6 +11,14 @@ const tabs = useTemplateRef('tabs')
 <template>
   <div class="p-8 space-y-8">
 
+    <SearchList>
+      <SearchListInput></SearchListInput>
+      <SearchListItems>
+        <SearchListItem value="one">one</SearchListItem>
+        <SearchListItem value="two">two</SearchListItem>
+        <SearchListItem value="three">three</SearchListItem>
+      </SearchListItems>
+    </SearchList>
     <Tabs defaultValue="one" ref="tabs" @open="(value:string) => console.log(value)">
       <TabList>
         <TabTrigger value="one">one</TabTrigger>
