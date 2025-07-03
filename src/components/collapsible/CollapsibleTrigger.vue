@@ -11,13 +11,11 @@
 </template>
 
 <script setup lang="ts">
-import { inject, type HTMLAttributes, type Ref } from 'vue'
+import { inject, type Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 const { visibleAttrs, pharosClass } = usePharosComponent()
 

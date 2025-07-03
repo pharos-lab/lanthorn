@@ -11,16 +11,14 @@
 </template>
 
 <script setup lang="ts">
-import { useTemplateRef, type HTMLAttributes } from 'vue';
+import { useTemplateRef } from 'vue';
 import { Floating } from '../floating'
 import { usePharosComponent } from '../../composables/usePharosComponent';
+import type { BaseProps } from '../../types';
 
 const floatingRef = useTemplateRef('floatingRef')
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 defineExpose({
   open: () => floatingRef.value?.open(),

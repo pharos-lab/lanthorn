@@ -13,33 +13,34 @@
 import { provide, type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
 import { useOpenable } from '../../composables/useOpenable'
+import type { BaseProps, OpenableEmits } from '../../types';
 
-const props = withDefaults(defineProps<{
-    class?: HTMLAttributes['class'],
+interface FloatingProps extends BaseProps {
     trigger?: string,
-    placement?: string,
-    delay?: number,
-    [key: string]: unknown
-}>(), {trigger: () => 'click', placement: () => 'bottom', delay: () => 0})
+	placement?: string,
+	delay?: number,
+}
 
-const emits = defineEmits<{
-  open: []
-  close: []
-  toggle: [isOpen: Boolean]
-}>()
+const props = withDefaults(defineProps<FloatingProps>(), {
+	trigger: () => 'click', 
+	placement: () => 'bottom', 
+	delay: () => 0}
+)
+
+const emits = defineEmits<OpenableEmits>()
 
 defineOptions({
-  inheritAttrs: false
+	inheritAttrs: false
 })
 
 const { isOpen, open, close, toggle } = useOpenable({emits})
 const { visibleAttrs, pharosClass } = usePharosComponent()
 
 defineExpose({
-  open,
-  close,
-  toggle,
-  isOpen
+    open,
+    close,
+    toggle,
+    isOpen
 })
 
 provide('floating', { isOpen, toggle, close, open, props })

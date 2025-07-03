@@ -10,22 +10,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, provide } from 'vue'
-import type { HTMLAttributes, Ref } from 'vue'
+import { computed, provide } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
 import { useOpenable } from '../../composables/useOpenable';
-import type { OpenableEmits } from '../../types';
+import type { BaseProps, OpenableEmits } from '../../types';
 
-const props = defineProps<{
-  class?: HTMLAttributes['class']
-  orientation?: 'horizontal' | 'vertical'
-  defaultValue?: string
-}>()
+interface TabsProps extends BaseProps {
+	orientation?: 'horizontal' | 'vertical',
+	defaultValue?: string
+}
+const props = defineProps<TabsProps>()
 
 const emits = defineEmits<OpenableEmits>()
 
 defineOptions({
-  inheritAttrs: false,
+	inheritAttrs: false,
 })
 
 const { visibleAttrs, pharosClass } = usePharosComponent()
@@ -35,13 +34,12 @@ const { open, active } = useOpenable({emits, defaultValue: props.defaultValue})
 defineExpose({ active, open })
 
 provide('tabs', {
-  active,
-  open,
-  orientation: props.orientation ?? 'horizontal',
+	active,
+	open,
+	orientation: props.orientation ?? 'horizontal',
 })
 
-
 const orientationClass = computed(() => {
-  return props.orientation === 'horizontal' ? 'flex-row' : 'flex-col'
+	return props.orientation === 'horizontal' ? 'flex-row' : 'flex-col'
 })
 </script>

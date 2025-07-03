@@ -9,12 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-  class?: HTMLAttributes['class']
-}>()
+const props = defineProps<BaseProps>()
 
 defineOptions({
   inheritAttrs: false,

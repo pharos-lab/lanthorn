@@ -10,17 +10,16 @@
 </template>
   
 <script setup lang="ts">
-import { provide, type HTMLAttributes } from 'vue'
+import { provide } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
 import { useOpenable } from '../../composables/useOpenable'
-import type { OpenableEmits } from '../../types';
+import type { BaseProps, OpenableEmits } from '../../types';
 
+interface CollapsibleProps extends BaseProps {
+  open?: boolean
+} 
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    open?: Boolean,
-    [key: string]: unknown
-}>()
+const props = defineProps<CollapsibleProps extends BaseProps>()
 
 const emits = defineEmits<OpenableEmits>()
 

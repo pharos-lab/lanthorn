@@ -1,3 +1,5 @@
+import type { HtmlHTMLAttributes } from "vue"
+
 export type Theme = {
   colors: Record<string, string>,
   props: Record<string, {[key:string]: string}>,
@@ -7,7 +9,6 @@ export type Theme = {
     props?: Record<string, unknown>
   }>
 }
-
 
 export type Pharos = {
   theme: Theme
@@ -20,8 +21,14 @@ export type PluginOptions = {
   components?: string[]
 }
 
+export interface BaseProps {
+    class?: HtmlHTMLAttributes['class'];
+    [key: string]: unknown;
+}
+
 export type OpenableEmits = {
   open?: [state?: unknown],
   close?: [],
   toggle?: [state: unknown]
 }
+

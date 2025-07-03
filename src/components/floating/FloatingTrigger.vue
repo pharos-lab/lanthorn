@@ -11,13 +11,11 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, type Ref, type HTMLAttributes } from 'vue'
+import { inject, computed, type Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 const floating = inject<{
      isOpen: Ref, 

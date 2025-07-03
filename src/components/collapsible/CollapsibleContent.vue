@@ -17,13 +17,11 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, ref, type Ref, type HTMLAttributes } from 'vue'
+import { inject, computed, ref, type Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 const collapsible = inject<{
     isOpen: Ref<boolean>,

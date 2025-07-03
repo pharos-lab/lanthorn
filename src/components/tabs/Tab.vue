@@ -12,13 +12,11 @@
 
 <script setup lang="ts">
 import { inject, computed } from 'vue'
-import type { HTMLAttributes, Ref } from 'vue'
+import type { Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-  value: string
-  class?: HTMLAttributes['class']
-}>()
+const props = defineProps<BaseProps>()
 
 defineOptions({
   inheritAttrs: false,

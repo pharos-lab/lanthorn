@@ -22,14 +22,15 @@
 </template>
 
 <script setup lang="ts">
-import { type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-    href?: string,
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+interface ButtonProps extends BaseProps {
+  href?: string
+} 
+
+const props = defineProps<ButtonProps>()
+
 
 defineOptions({
   inheritAttrs: false

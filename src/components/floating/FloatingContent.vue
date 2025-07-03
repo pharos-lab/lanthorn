@@ -14,15 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, type Ref, type HTMLAttributes } from 'vue'
-
+import { inject, computed, type Ref } from 'vue'
 import { getPlacementClass, getTransitionName } from './utils.js'
 import { usePharosComponent } from '../../composables/usePharosComponent.js'
+import type { BaseProps } from '../../types/index.js';
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 const floating = inject<{
      isOpen: Ref, 
@@ -55,8 +52,6 @@ const { visibleAttrs, pharosClass } = usePharosComponent()
   opacity: 0;
   transform: translateY(10px);
 }
-
-
 
 .fade-slide-up-enter-from, 
 .fade-slide-up-leave-to {

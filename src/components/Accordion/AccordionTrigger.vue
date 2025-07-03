@@ -10,12 +10,9 @@
 <script setup lang="ts">
 import { CollapsibleTrigger } from '../collapsible';
 import { usePharosComponent } from '../../composables/usePharosComponent';
-import type { HTMLAttributes } from 'vue';
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 const { visibleAttrs, pharosClass } = usePharosComponent()
 

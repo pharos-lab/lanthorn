@@ -11,14 +11,11 @@
 
 <script setup lang="ts">
 import { provide, onMounted, onUnmounted } from 'vue'
-import { type HTMLAttributes } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
 import { useOpenable } from '../../composables/useOpenable';
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 const emits = defineEmits<{
     open: []

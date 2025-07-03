@@ -11,13 +11,11 @@
   
 <script setup lang="ts">
 import { Collapsible }  from '../collapsible';
-import { useTemplateRef, type HTMLAttributes } from 'vue'
+import { useTemplateRef } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent';
+import type { BaseProps } from '../../types';
 
-const props = defineProps<{
-    class?: HTMLAttributes['class'],
-    [key: string]: unknown
-}>()
+const props = defineProps<BaseProps>()
 
 defineOptions({
   inheritAttrs: false

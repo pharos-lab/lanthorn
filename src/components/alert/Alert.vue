@@ -17,15 +17,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, type HTMLAttributes } from 'vue'
+import { ref } from 'vue'
 import { X } from 'lucide-vue-next'
 import { usePharosComponent } from '../../composables/usePharosComponent'
+import type { BaseProps } from '../../types';
 
-const props = withDefaults(defineProps<{ 
-    class?: HTMLAttributes['class'],
-    dismissable?: Boolean,
-    [key: string]: unknown
-}>(), { dismissable: () => true })
+interface AlertProps extends BaseProps {
+  dissmisable?: boolean
+} 
+
+const props = withDefaults(defineProps<AlertProps>(), { dismissable: () => true })
+
 const isOpen = ref(true)
 
 defineOptions({
