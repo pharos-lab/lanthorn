@@ -1,7 +1,7 @@
 <template>
     <div 
         class="l-search-list" 
-        :class="pharosClass('Collapsible', props.class)"
+        :class="pharosClass('SearchList', props.class)"
         v-bind="visibleAttrs"
     >
         <slot></slot>    

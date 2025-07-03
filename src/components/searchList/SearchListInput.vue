@@ -3,7 +3,7 @@
         v-model="searchList?.model.value"
         type="text" 
         class="l-search-list-input" 
-        :class="pharosClass('Collapsible', props.class)"
+        :class="pharosClass('SearchListInput', props.class)"
         v-bind="visibleAttrs"
     >
 </template>
