@@ -10,7 +10,7 @@
 </template>
   
 <script setup lang="ts">
-import { provide } from 'vue'
+import { provide } from 'vue';
 import { usePharosComponent } from '../../composables/usePharosComponent';
 import { useOpenable } from '../../composables/useOpenable'
 import type { BaseProps, OpenableEmits } from '../../types';
@@ -19,7 +19,7 @@ interface CollapsibleProps extends BaseProps {
   open?: boolean
 } 
 
-const props = defineProps<CollapsibleProps extends BaseProps>()
+const props = defineProps<CollapsibleProps>()
 
 const emits = defineEmits<OpenableEmits>()
 

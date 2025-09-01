@@ -16,7 +16,11 @@ import type { Ref } from 'vue'
 import { usePharosComponent } from '../../composables/usePharosComponent'
 import type { BaseProps } from '../../types';
 
-const props = defineProps<BaseProps>()
+interface TabProps extends BaseProps {
+  value: String
+} 
+
+const props = defineProps<TabProps>()
 
 defineOptions({
   inheritAttrs: false,
@@ -28,5 +32,9 @@ const tabs = inject('tabs') as {
   active: Ref<string>
 }
 
-const isActive = computed(() => tabs.active.value === props.value)
+const isActive = computed(() => {
+  console.log(tabs.active.value, props.value);
+  return tabs.active.value === props.value
+  
+})
 </script>
