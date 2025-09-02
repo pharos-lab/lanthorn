@@ -6,10 +6,13 @@ const collapsible = useTemplateRef('collapsible')
 const tabs = useTemplateRef('tabs')
 
 
+
 </script>
 
 <template>
   <div class="p-8 space-y-8">
+
+    <Button size="lg" @click="tabs.open('two')">override</Button>
 
     <SearchList>
       <SearchListInput></SearchListInput>
@@ -19,6 +22,7 @@ const tabs = useTemplateRef('tabs')
         <SearchListItem value="three">three</SearchListItem>
       </SearchListItems>
     </SearchList>
+
     <Tabs defaultValue="one" ref="tabs" @open="(value:string) => console.log(value)">
       <TabList>
         <TabTrigger value="one">one</TabTrigger>
@@ -29,6 +33,7 @@ const tabs = useTemplateRef('tabs')
       <Tab value="two">num 2</Tab>
       <Tab value="three">num 3</Tab>
     </Tabs>
+
     <Dialog>
       <DialogTrigger>Open me</DialogTrigger>
       <DialogContent>
@@ -38,7 +43,6 @@ const tabs = useTemplateRef('tabs')
 
     <br>
 
-    <Button size="lg" @click="tabs?.open('two')">override</Button>
     <Alert color="primary" :dismissable="false">Oops! something went wrong!</Alert>
 
     <Collapsible :open="true" ref="collapsible" @close="console.log('collaped')">

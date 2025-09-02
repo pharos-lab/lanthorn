@@ -20,7 +20,8 @@ export function useTheme(options?: PluginOptions) {
         const colorConfig = options?.theme.colors?.[color]
         
         if (!colorConfig) {
-            console.warn(`[theme warning] Color "${color}" is not defined in theme.`)
+            console.warn(`[theme warning] Color "${color}" is not defined in theme.
+            component: ${component}`)
             return []
         }
 
@@ -29,13 +30,13 @@ export function useTheme(options?: PluginOptions) {
         // Warn if apply's value is not in color's config
         componentConfig?.apply?.forEach(apply => {
             if(!(Object.keys(colorConfig).includes(apply))) {
-                console.warn( `[theme warning] "${apply}" is listed in componentConfig.apply but doesn't exist in color theme "${color}".`)
+                console.warn( `[theme warning] "${apply}" is listed in ${component} "apply" config but doesn't exist in color theme "${color}".`)
             }
         })
         
         const colorClasses = Object.entries(colorConfig).map(([key, value]) => {
-
-            if (staticProperties.includes(key) || props[key] || props[key] === '') return value
+            
+            if (staticProperties.includes(key)) return value
 
             if (props[key] == false) {
                 return ''

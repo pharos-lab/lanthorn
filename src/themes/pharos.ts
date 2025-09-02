@@ -6,7 +6,7 @@ const pharos = {
             hover: 'hover:bg-slate-100',
             border: 'border border-slate-500',
             focus: 'focus:ring-2 focus:ring-slate-500/50 focus:ring-offset-1',
-            outline: 'bg-red-400'
+            outline: 'border border-slate-500 border-2'
         },
     },
     props: {
@@ -27,7 +27,7 @@ const pharos = {
     components: {
         Button: {
             class: 'px-3 py-2 rounded-lg font-semibold',
-            apply: ['focus', 'hover', 'outline'],
+            apply: ['focus', 'hover', 'outline', 'wrong'],
             props: {
                 size: 'md',
                 shadow: 'base'

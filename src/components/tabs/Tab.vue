@@ -17,24 +17,22 @@ import { usePharosComponent } from '../../composables/usePharosComponent'
 import type { BaseProps } from '../../types';
 
 interface TabProps extends BaseProps {
-  value: String
+	value: String
 } 
 
 const props = defineProps<TabProps>()
 
 defineOptions({
-  inheritAttrs: false,
+  	inheritAttrs: false,
 })
 
 const { visibleAttrs, pharosClass } = usePharosComponent()
 
 const tabs = inject('tabs') as {
-  active: Ref<string>
+  	active: Ref<string>
 }
 
 const isActive = computed(() => {
-  console.log(tabs.active.value, props.value);
-  return tabs.active.value === props.value
-  
+  	return tabs.active.value === props.value 
 })
 </script>
